@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-inter text-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-cormorant;
+  }
+
+  ::selection {
+    @apply bg-gold/20 text-charcoal;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-section-mobile md:py-20 lg:py-section;
+  }
+
+  .container-wide {
+    @apply max-w-container mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .container-content {
+    @apply max-w-content mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .container-narrow {
+    @apply max-w-narrow mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .heading-hero {
+    @apply font-cormorant text-hero-mobile md:text-display lg:text-hero font-light tracking-tight;
+  }
+
+  .heading-display {
+    @apply font-cormorant text-display-mobile md:text-display font-light;
+  }
+
+  .heading-title {
+    @apply font-cormorant text-title-mobile md:text-title font-light;
+  }
+
+  .heading-subtitle {
+    @apply font-cormorant text-subtitle font-light;
+  }
+
+  .heading-section {
+    @apply font-cormorant text-section font-normal;
+  }
+
+  .divider {
+    @apply w-full h-px bg-taupe/40;
+  }
+
+  .divider-gold {
+    @apply w-16 h-px bg-gold;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-taupe rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate;
+}
