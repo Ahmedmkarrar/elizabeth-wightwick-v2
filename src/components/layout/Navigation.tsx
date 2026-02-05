@@ -1,23 +1,35 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
-  { href: '/properties', label: 'Properties' },
-  { href: '/services', label: 'Services' },
-  { href: '/wimbledon', label: 'Wimbledon' },
-  { href: '/about', label: 'About' },
+  { href: '/buy', label: 'Buy' },
+  { href: '/rent', label: 'Rent' },
+  {
+    href: '/homeowners',
+    label: 'Homeowners',
+    children: [
+      { href: '/homeowners/selling-with-us', label: 'Selling With Us' },
+      { href: '/homeowners/buying-with-us', label: 'Buying With Us' },
+      { href: '/homeowners/property-management', label: 'Property Management' },
+      { href: '/homeowners/preparing-to-list', label: 'Preparing to List Your Home' },
+    ],
+  },
+  { href: '/who-we-are', label: 'Who We Are' },
   { href: '/contact', label: 'Contact' },
 ];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   const isHome = pathname === '/';
@@ -31,7 +43,19 @@ export default function Navigation() {
 
   useEffect(() => {
     setIsMobileOpen(false);
+    setActiveDropdown(null);
+    setMobileExpanded(null);
   }, [pathname]);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   if (isAdmin) return null;
 
@@ -59,28 +83,78 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-10" ref={dropdownRef}>
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  'text-small font-inter font-normal tracking-wide transition-colors duration-400 relative',
-                  isScrolled || !isHome
-                    ? 'text-charcoal hover:text-gold'
-                    : 'text-white/90 hover:text-white',
-                  pathname === link.href && 'after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-px after:bg-current'
+              <div key={link.href} className="relative">
+                {link.children ? (
+                  <>
+                    <button
+                      onClick={() => setActiveDropdown(activeDropdown === link.href ? null : link.href)}
+                      onMouseEnter={() => setActiveDropdown(link.href)}
+                      className={cn(
+                        'text-small font-inter font-normal tracking-wide transition-colors duration-400 relative flex items-center gap-1',
+                        isScrolled || !isHome
+                          ? 'text-charcoal hover:text-brand'
+                          : 'text-white/90 hover:text-white',
+                        pathname.startsWith(link.href) && 'after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-px after:bg-current'
+                      )}
+                    >
+                      {link.label}
+                      <ChevronDownIcon className={cn(
+                        'w-3.5 h-3.5 transition-transform duration-300',
+                        activeDropdown === link.href && 'rotate-180'
+                      )} />
+                    </button>
+                    <AnimatePresence>
+                      {activeDropdown === link.href && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 8 }}
+                          transition={{ duration: 0.2, ease: 'easeOut' }}
+                          onMouseLeave={() => setActiveDropdown(null)}
+                          className="absolute top-full left-0 mt-3 bg-white shadow-lg border border-beige min-w-[260px]"
+                        >
+                          <div className="py-2">
+                            {link.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                className={cn(
+                                  'block px-6 py-3 text-small font-inter text-charcoal hover:text-brand hover:bg-beige/50 transition-colors duration-300',
+                                  pathname === child.href && 'text-brand bg-beige/30'
+                                )}
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className={cn(
+                      'text-small font-inter font-normal tracking-wide transition-colors duration-400 relative',
+                      isScrolled || !isHome
+                        ? 'text-charcoal hover:text-brand'
+                        : 'text-white/90 hover:text-white',
+                      pathname === link.href && 'after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-px after:bg-current'
+                    )}
+                  >
+                    {link.label}
+                  </Link>
                 )}
-              >
-                {link.label}
-              </Link>
+              </div>
             ))}
             <Link
               href="/valuation"
               className={cn(
                 'text-small font-inter font-normal tracking-wide px-6 py-2.5 transition-all duration-400',
                 isScrolled || !isHome
-                  ? 'bg-gold text-white hover:bg-gold-dark'
+                  ? 'bg-brand text-white hover:bg-brand-dark'
                   : 'border border-white/60 text-white hover:bg-white/10'
               )}
             >
@@ -118,25 +192,70 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="fixed inset-0 z-40 bg-cream lg:hidden"
+            className="fixed inset-0 z-40 bg-white lg:hidden overflow-y-auto"
           >
-            <div className="flex flex-col items-center justify-center h-full gap-8">
+            <div className="flex flex-col items-center justify-center min-h-full py-24 gap-6">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + i * 0.05, duration: 0.4 }}
+                  className="text-center"
                 >
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      'font-cormorant text-title font-light text-charcoal transition-colors hover:text-gold',
-                      pathname === link.href && 'text-gold'
-                    )}
-                  >
-                    {link.label}
-                  </Link>
+                  {link.children ? (
+                    <div>
+                      <button
+                        onClick={() => setMobileExpanded(mobileExpanded === link.href ? null : link.href)}
+                        className={cn(
+                          'font-cormorant text-title font-light text-charcoal transition-colors hover:text-brand flex items-center gap-2',
+                          pathname.startsWith(link.href) && 'text-brand'
+                        )}
+                      >
+                        {link.label}
+                        <ChevronDownIcon className={cn(
+                          'w-4 h-4 transition-transform duration-300',
+                          mobileExpanded === link.href && 'rotate-180'
+                        )} />
+                      </button>
+                      <AnimatePresence>
+                        {mobileExpanded === link.href && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pt-4 space-y-3">
+                              {link.children.map((child) => (
+                                <Link
+                                  key={child.href}
+                                  href={child.href}
+                                  className={cn(
+                                    'block font-inter text-small text-slate hover:text-brand transition-colors',
+                                    pathname === child.href && 'text-brand'
+                                  )}
+                                >
+                                  {child.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        'font-cormorant text-title font-light text-charcoal transition-colors hover:text-brand',
+                        pathname === link.href && 'text-brand'
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
               <motion.div
@@ -147,7 +266,7 @@ export default function Navigation() {
               >
                 <Link
                   href="/valuation"
-                  className="bg-gold text-white px-8 py-3 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+                  className="bg-brand text-white px-8 py-3 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
                 >
                   Book Valuation
                 </Link>

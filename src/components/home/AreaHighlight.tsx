@@ -28,13 +28,13 @@ export default function AreaHighlight() {
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-tiny font-inter font-medium uppercase tracking-widest text-gold">
+              <span className="text-tiny font-inter font-medium uppercase tracking-widest text-brand">
                 Local Expertise
               </span>
               <h2 className="heading-display text-charcoal mt-4">
                 Wimbledon Village
               </h2>
-              <div className="divider-gold mt-6 mb-8" />
+              <div className="divider-brand mt-6 mb-8" />
               <p className="text-body text-slate font-inter font-light leading-relaxed">
                 With over 30 years of combined experience in Wimbledon and South West London,
                 we bring unrivalled local knowledge to every property transaction. From the
@@ -48,7 +48,7 @@ export default function AreaHighlight() {
               </p>
               <Link
                 href="/wimbledon"
-                className="inline-block mt-8 text-small font-inter text-charcoal border-b border-charcoal pb-0.5 hover:text-gold hover:border-gold transition-colors duration-400"
+                className="inline-block mt-8 text-small font-inter text-charcoal border-b border-charcoal pb-0.5 hover:text-brand hover:border-brand transition-colors duration-400"
               >
                 Explore Wimbledon
               </Link>

@@ -2,22 +2,25 @@ import Link from 'next/link';
 
 const footerLinks = {
   properties: [
-    { href: '/properties/sales', label: 'Properties for Sale' },
-    { href: '/properties/lettings', label: 'Properties to Let' },
+    { href: '/buy', label: 'Buy' },
+    { href: '/rent', label: 'Rent' },
+    { href: '/best-of-2025', label: 'Best of 2025' },
+    { href: '/properties/archive', label: 'Property Archive' },
     { href: '/valuation', label: 'Free Valuation' },
     { href: '/register', label: 'Register' },
   ],
-  services: [
-    { href: '/services/sales', label: 'Residential Sales' },
-    { href: '/services/lettings', label: 'Residential Lettings' },
-    { href: '/services/property-management', label: 'Property Management' },
-    { href: '/services/property-sourcing', label: 'Property Sourcing' },
+  homeowners: [
+    { href: '/homeowners/selling-with-us', label: 'Selling With Us' },
+    { href: '/homeowners/buying-with-us', label: 'Buying With Us' },
+    { href: '/homeowners/property-management', label: 'Property Management' },
+    { href: '/homeowners/preparing-to-list', label: 'Preparing to List' },
+    { href: '/fees', label: 'Our Fees' },
   ],
   company: [
-    { href: '/about', label: 'About Us' },
-    { href: '/wimbledon', label: 'Wimbledon Guide' },
-    { href: '/fees', label: 'Our Fees' },
+    { href: '/who-we-are', label: 'Who We Are' },
     { href: '/contact', label: 'Contact' },
+    { href: '/privacy-policy', label: 'Privacy Policy' },
+    { href: '/complaints-procedure', label: 'Complaints Procedure' },
   ],
 };
 
@@ -60,13 +63,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Homeowners */}
           <div>
             <h3 className="font-inter text-tiny font-medium uppercase tracking-widest text-white/40 mb-6">
-              Services
+              Homeowners
             </h3>
             <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
+              {footerLinks.homeowners.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -111,9 +114,13 @@ export default function Footer() {
             <span className="hidden md:inline">|</span>
             <p>VAT No. 312425641</p>
           </div>
-          <p className="text-tiny text-white/30">
-            &copy; {new Date().getFullYear()} Elizabeth Wightwick. All rights reserved.
-          </p>
+          <div className="flex items-center gap-4 text-tiny text-white/30">
+            <Link href="/privacy-policy" className="hover:text-white/60 transition-colors">Privacy</Link>
+            <span>|</span>
+            <Link href="/complaints-procedure" className="hover:text-white/60 transition-colors">Complaints</Link>
+            <span>|</span>
+            <p>&copy; {new Date().getFullYear()} Elizabeth Wightwick</p>
+          </div>
         </div>
       </div>
     </footer>

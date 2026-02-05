@@ -42,10 +42,10 @@ export function getStatusLabel(status: string): string {
 
 export function getStatusColor(status: string): string {
   const colors: Record<string, string> = {
-    available: 'bg-forest text-white',
-    let_agreed: 'bg-gold text-white',
+    available: 'bg-brand text-white',
+    let_agreed: 'bg-brand-dark text-white',
     sold: 'bg-slate text-white',
-    under_offer: 'bg-gold text-white',
+    under_offer: 'bg-brand-dark text-white',
   };
   return colors[status] || 'bg-slate text-white';
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import ListingPopup from "@/components/layout/ListingPopup";
 
 export const metadata: Metadata = {
   title: {
@@ -45,6 +46,7 @@ export default function RootLayout({
         <Navigation />
         <main>{children}</main>
         <Footer />
+        <ListingPopup />
       </body>
     </html>
   );

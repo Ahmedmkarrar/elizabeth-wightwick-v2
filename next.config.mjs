@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: '*.supabase.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdns3.estateweb.com',
+      },
     ],
   },
 };

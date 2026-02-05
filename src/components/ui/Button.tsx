@@ -19,9 +19,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           'inline-flex items-center justify-center font-inter font-normal tracking-wide transition-all duration-400 ease-out',
           'disabled:opacity-50 disabled:cursor-not-allowed',
           {
-            'bg-gold text-white hover:bg-gold-dark': variant === 'primary',
+            'bg-brand text-white hover:bg-brand-dark': variant === 'primary',
             'border border-charcoal text-charcoal hover:bg-charcoal hover:text-white': variant === 'secondary',
-            'text-charcoal hover:text-gold': variant === 'ghost',
+            'text-charcoal hover:text-brand': variant === 'ghost',
             'text-charcoal underline-offset-4 hover:underline': variant === 'link',
           },
           {

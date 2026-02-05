@@ -1,86 +1,57 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
-const services = [
+const sections = [
   {
-    number: '01',
-    title: 'Residential Sales',
-    description:
-      'Expert guidance through every step of selling your property, with bespoke marketing tailored to your home.',
-    href: '/services/sales',
+    title: 'Best of 2025',
+    description: 'A curated collection of the finest properties we have marketed this year. Each chosen for character, quality, and enduring appeal.',
+    href: '/best-of-2025',
+    label: 'View Collection',
+    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80',
   },
   {
-    number: '02',
-    title: 'Residential Lettings',
-    description:
-      'Comprehensive lettings service for landlords and tenants, ensuring the perfect match every time.',
-    href: '/services/lettings',
-  },
-  {
-    number: '03',
-    title: 'Property Management',
-    description:
-      'Full property management service, handling every aspect of your rental property with care and diligence.',
-    href: '/services/property-management',
-  },
-  {
-    number: '04',
-    title: 'Property Sourcing',
-    description:
-      'A bespoke property finding service for buyers who want a dedicated search professional on their side.',
-    href: '/services/property-sourcing',
+    title: 'For Homeowners',
+    description: 'Whether selling, buying, or managing your property, we offer a service built on trust, expertise, and genuine care for your home.',
+    href: '/homeowners',
+    label: 'Explore',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
   },
 ];
 
 export default function Services() {
   return (
-    <section className="section-padding bg-white">
+    <section className="section-padding bg-beige/20">
       <div className="container-wide">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-          className="heading-display text-charcoal text-center"
-        >
-          Our Services
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="mt-4 text-body text-slate font-inter font-light text-center max-w-xl mx-auto"
-        >
-          Dedicated, personal service across every aspect of property
-        </motion.p>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-taupe/30 mt-16">
-          {services.map((service, i) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {sections.map((section, i) => (
             <motion.div
-              key={service.number}
-              initial={{ opacity: 0, y: 20 }}
+              key={section.title}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
+              transition={{ duration: 0.7, delay: i * 0.15 }}
             >
-              <Link
-                href={service.href}
-                className="group block bg-white p-10 h-full transition-colors duration-400 hover:bg-cream"
-              >
-                <span className="font-cormorant text-4xl font-light text-gold">
-                  {service.number}
-                </span>
-                <h3 className="font-cormorant text-subtitle font-light text-charcoal mt-6 mb-4">
-                  {service.title}
+              <Link href={section.href} className="group block">
+                <div className="relative aspect-[16/10] overflow-hidden bg-beige">
+                  <Image
+                    src={section.image}
+                    alt={section.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+                <h3 className="heading-title text-charcoal mt-6 group-hover:text-brand transition-colors">
+                  {section.title}
                 </h3>
-                <p className="text-small text-slate font-inter font-light leading-relaxed">
-                  {service.description}
+                <p className="mt-3 text-body text-slate font-inter font-light leading-relaxed">
+                  {section.description}
                 </p>
-                <span className="inline-block mt-6 text-tiny font-inter text-charcoal uppercase tracking-widest relative after:absolute after:bottom-[-2px] after:left-0 after:w-0 after:h-px after:bg-gold after:transition-all after:duration-400 group-hover:after:w-full">
-                  Learn More
+                <span className="inline-block mt-4 text-tiny font-inter font-medium uppercase tracking-widest text-brand">
+                  {section.label}
                 </span>
               </Link>
             </motion.div>

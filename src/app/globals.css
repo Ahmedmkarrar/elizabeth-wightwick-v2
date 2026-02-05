@@ -20,7 +20,7 @@
   }
 
   ::selection {
-    @apply bg-gold/20 text-charcoal;
+    @apply bg-brand/20 text-charcoal;
   }
 }
 
@@ -65,8 +65,12 @@
     @apply w-full h-px bg-taupe/40;
   }
 
+  .divider-brand {
+    @apply w-16 h-px bg-brand;
+  }
+
   .divider-gold {
-    @apply w-16 h-px bg-gold;
+    @apply w-16 h-px bg-brand;
   }
 }
 

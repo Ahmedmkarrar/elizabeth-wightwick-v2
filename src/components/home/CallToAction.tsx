@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function CallToAction() {
   return (
-    <section className="section-padding bg-charcoal text-white">
+    <section className="section-padding bg-brand-dark text-white">
       <div className="container-narrow text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export default function CallToAction() {
         >
           <Link
             href="/valuation"
-            className="bg-gold text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors duration-400"
+            className="bg-white text-brand-dark px-8 py-3.5 text-small font-inter tracking-wide hover:bg-white/90 transition-colors duration-400"
           >
             Request Free Valuation
           </Link>
