@@ -18,36 +18,44 @@ export default function Testimonials() {
   }, [next]);
 
   return (
-    <section className="section-padding bg-cream">
-      <div className="container-narrow text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <section className="section-padding bg-cream relative overflow-hidden">
+      {/* Decorative large quote */}
+      <div className="absolute top-12 left-1/2 -translate-x-1/2 pointer-events-none select-none">
+        <span className="font-cormorant text-[15rem] md:text-[20rem] leading-none text-brand/[0.04] font-light">
+          &ldquo;
+        </span>
+      </div>
+
+      <div className="container-narrow text-center relative z-10">
+        <motion.span
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.6 }}
-          className="heading-display text-charcoal mb-16"
+          className="text-[11px] font-inter font-medium uppercase tracking-[0.3em] text-brand"
         >
-          What Our Clients Say
-        </motion.h2>
+          Testimonials
+        </motion.span>
 
-        <div className="relative min-h-[260px] flex items-center justify-center">
+        <div className="relative min-h-[280px] flex items-center justify-center mt-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.5, ease: 'easeOut' }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
               className="absolute inset-0 flex flex-col items-center justify-center"
             >
-              <blockquote className="font-cormorant text-subtitle md:text-title font-light text-charcoal leading-snug italic max-w-3xl mx-auto">
+              <blockquote className="font-cormorant text-[1.5rem] sm:text-[1.75rem] md:text-[2rem] font-light text-charcoal leading-snug italic max-w-3xl mx-auto">
                 &ldquo;{testimonials[current].quote}&rdquo;
               </blockquote>
-              <div className="mt-8">
-                <p className="font-inter text-small font-medium text-charcoal">
+              <div className="mt-10">
+                <div className="w-8 h-px bg-brand/30 mx-auto mb-5" />
+                <p className="font-inter text-[13px] font-medium text-charcoal tracking-wide">
                   {testimonials[current].name}
                 </p>
-                <p className="font-inter text-tiny text-slate mt-1">
+                <p className="font-inter text-[12px] text-slate/70 mt-1.5 tracking-wide">
                   {testimonials[current].role}
                 </p>
               </div>
@@ -56,13 +64,13 @@ export default function Testimonials() {
         </div>
 
         {/* Dots */}
-        <div className="flex items-center justify-center gap-3 mt-12">
+        <div className="flex items-center justify-center gap-3 mt-10">
           {testimonials.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-2 h-2 rounded-full transition-all duration-400 ${
-                i === current ? 'bg-brand w-6' : 'bg-taupe'
+              className={`transition-all duration-500 rounded-full ${
+                i === current ? 'w-8 h-1.5 bg-brand' : 'w-1.5 h-1.5 bg-taupe/60 hover:bg-taupe'
               }`}
               aria-label={`Go to testimonial ${i + 1}`}
             />

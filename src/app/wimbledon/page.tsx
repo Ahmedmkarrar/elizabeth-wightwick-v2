@@ -61,7 +61,7 @@ export default function WimbledonPage() {
         <div className="container-content">
           <div className="max-w-2xl mx-auto text-center">
             <h2 className="heading-title text-charcoal">Why Wimbledon?</h2>
-            <div className="divider-gold mx-auto mt-6 mb-8" />
+            <div className="divider-brand mx-auto mt-6 mb-8" />
             <p className="text-body text-slate font-inter font-light leading-relaxed">
               Wimbledon Village offers a rare combination of open green spaces, excellent schools, a thriving high street, and outstanding transport links &mdash; all within a close-knit community atmosphere. It is no wonder that Wimbledon consistently ranks among the most desirable places to live in London.
             </p>
@@ -77,7 +77,7 @@ export default function WimbledonPage() {
               <div key={section.title} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                 <div className={`flex flex-col justify-center ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <h2 className="heading-title text-charcoal">{section.title}</h2>
-                  <div className="divider-gold mt-5 mb-6" />
+                  <div className="divider-brand mt-5 mb-6" />
                   <p
                     className="text-body text-slate font-inter font-light leading-relaxed"
                     dangerouslySetInnerHTML={{ __html: section.content }}
@@ -117,7 +117,7 @@ export default function WimbledonPage() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/properties"
-              className="bg-gold text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+              className="bg-brand text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
             >
               Browse Properties
             </Link>

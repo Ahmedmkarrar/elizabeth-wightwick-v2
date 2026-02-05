@@ -75,7 +75,7 @@ export default function ValuationForm() {
       </div>
       <Textarea id="val-info" label="Additional Information" placeholder="Anything else we should know about your property..." />
       <div className="flex items-start gap-3 pt-2">
-        <input type="checkbox" id="gdpr-val" required className="mt-1 accent-gold" />
+        <input type="checkbox" id="gdpr-val" required className="mt-1 accent-brand" />
         <label htmlFor="gdpr-val" className="text-tiny text-slate font-inter">
           I consent to Elizabeth Wightwick storing my details to process this valuation request.
         </label>

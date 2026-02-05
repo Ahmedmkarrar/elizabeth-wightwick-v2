@@ -55,14 +55,14 @@ export default function LettingsServicePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
             <div>
               <h2 className="heading-title text-charcoal">For Landlords</h2>
-              <div className="divider-gold mt-6 mb-8" />
+              <div className="divider-brand mt-6 mb-8" />
               <p className="text-body text-slate font-inter font-light leading-relaxed mb-8">
                 Whether you own a single property or a portfolio, we provide a dedicated lettings service tailored to your needs. Our focus is on finding the right tenants quickly, minimising void periods, and protecting your investment.
               </p>
               <ul className="space-y-3">
                 {landlordServices.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2.5 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0" />
                     <span className="text-body text-slate font-inter font-light">{item}</span>
                   </li>
                 ))}
@@ -70,21 +70,21 @@ export default function LettingsServicePage() {
             </div>
             <div>
               <h2 className="heading-title text-charcoal">For Tenants</h2>
-              <div className="divider-gold mt-6 mb-8" />
+              <div className="divider-brand mt-6 mb-8" />
               <p className="text-body text-slate font-inter font-light leading-relaxed mb-8">
                 Looking for your ideal home in Wimbledon? Register your requirements with us and gain access to a curated selection of properties, many of which are not available elsewhere.
               </p>
               <ul className="space-y-3">
                 {tenantServices.map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 bg-gold rounded-full mt-2.5 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-brand rounded-full mt-2.5 flex-shrink-0" />
                     <span className="text-body text-slate font-inter font-light">{item}</span>
                   </li>
                 ))}
               </ul>
               <Link
                 href="/register"
-                className="inline-block mt-8 bg-gold text-white px-7 py-3 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+                className="inline-block mt-8 bg-brand text-white px-7 py-3 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
               >
                 Register Your Search
               </Link>
@@ -101,7 +101,7 @@ export default function LettingsServicePage() {
           </p>
           <Link
             href="/valuation"
-            className="inline-block mt-8 bg-gold text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+            className="inline-block mt-8 bg-brand text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
           >
             Free Rental Valuation
           </Link>

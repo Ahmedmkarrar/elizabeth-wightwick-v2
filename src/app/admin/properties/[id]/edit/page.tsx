@@ -12,7 +12,7 @@ export default function EditPropertyPage() {
     return (
       <div className="py-12 text-center">
         <h1 className="heading-title text-charcoal">Property Not Found</h1>
-        <Link href="/admin/properties" className="text-gold hover:text-gold-dark mt-4 inline-block font-inter text-small">
+        <Link href="/admin/properties" className="text-brand hover:text-brand-dark mt-4 inline-block font-inter text-small">
           Back to Properties
         </Link>
       </div>

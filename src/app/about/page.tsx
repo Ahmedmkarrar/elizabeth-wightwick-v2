@@ -36,11 +36,11 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex flex-col justify-center">
-              <span className="text-tiny font-inter font-medium uppercase tracking-widest text-gold">Our Story</span>
+              <span className="text-tiny font-inter font-medium uppercase tracking-widest text-brand">Our Story</span>
               <h2 className="heading-title text-charcoal mt-4">
                 30 Years of Wimbledon Expertise
               </h2>
-              <div className="divider-gold mt-6 mb-8" />
+              <div className="divider-brand mt-6 mb-8" />
               <div className="space-y-4 text-body text-slate font-inter font-light leading-relaxed">
                 <p>
                   Elizabeth Wightwick was founded with a simple belief: that buying, selling, or letting a property should be a personal experience, guided by people who genuinely care about getting it right.
@@ -101,7 +101,7 @@ export default function AboutPage() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="bg-gold text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+              className="bg-brand text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
             >
               Contact Us
             </Link>

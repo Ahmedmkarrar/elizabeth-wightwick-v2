@@ -7,9 +7,9 @@ import { motion } from 'framer-motion';
 export default function AreaHighlight() {
   return (
     <section className="relative overflow-hidden">
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[650px]">
         {/* Image */}
-        <div className="relative h-[400px] lg:h-auto">
+        <div className="relative h-[450px] lg:h-auto overflow-hidden">
           <Image
             src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80"
             alt="Wimbledon Village"
@@ -17,40 +17,43 @@ export default function AreaHighlight() {
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
+          {/* Subtle overlay for depth */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-charcoal/10 lg:to-white/5" />
         </div>
 
         {/* Content */}
         <div className="flex items-center bg-white">
-          <div className="px-8 py-16 lg:px-16 lg:py-20 max-w-xl">
+          <div className="px-8 py-16 lg:px-20 lg:py-20 max-w-xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-tiny font-inter font-medium uppercase tracking-widest text-brand">
+              <span className="text-[11px] font-inter font-medium uppercase tracking-[0.3em] text-brand">
                 Local Expertise
               </span>
-              <h2 className="heading-display text-charcoal mt-4">
+              <h2 className="font-cormorant text-[2.25rem] md:text-[2.75rem] font-light text-charcoal mt-5 leading-tight">
                 Wimbledon Village
               </h2>
-              <div className="divider-brand mt-6 mb-8" />
-              <p className="text-body text-slate font-inter font-light leading-relaxed">
+              <div className="w-12 h-px bg-brand/40 mt-6 mb-8" />
+              <p className="text-[15px] text-slate font-inter font-light leading-[1.9]">
                 With over 30 years of combined experience in Wimbledon and South West London,
                 we bring unrivalled local knowledge to every property transaction. From the
                 tree-lined streets of the Village to the open spaces of the Common, we know
                 every corner of this exceptional area.
               </p>
-              <p className="text-body text-slate font-inter font-light leading-relaxed mt-4">
+              <p className="text-[15px] text-slate font-inter font-light leading-[1.9] mt-5">
                 Our office on the High Street places us at the heart of the community,
                 enabling us to offer genuinely local insight and a personal service that
                 larger agencies simply cannot match.
               </p>
               <Link
                 href="/wimbledon"
-                className="inline-block mt-8 text-small font-inter text-charcoal border-b border-charcoal pb-0.5 hover:text-brand hover:border-brand transition-colors duration-400"
+                className="group inline-flex items-center gap-2 mt-8 text-[12px] font-inter font-medium uppercase tracking-[0.15em] text-charcoal hover:text-brand transition-colors duration-500"
               >
                 Explore Wimbledon
+                <span className="w-4 h-px bg-charcoal group-hover:w-8 group-hover:bg-brand transition-all duration-500" />
               </Link>
             </motion.div>
           </div>

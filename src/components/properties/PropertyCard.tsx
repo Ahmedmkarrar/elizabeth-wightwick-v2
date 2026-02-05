@@ -28,30 +28,30 @@ export default function PropertyCard({ property, featured = false }: PropertyCar
           src={property.main_image}
           alt={address}
           fill
-          className="object-cover transition-all duration-700 ease-out group-hover:scale-[1.04]"
+          className="object-cover transition-all duration-[1000ms] ease-out group-hover:scale-[1.05]"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
         {/* Gradient overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
         {/* Status badge */}
         {property.status !== 'available' && (
-          <div className="absolute top-4 left-4">
+          <div className="absolute top-4 left-4 z-10">
             <Badge status={property.status} />
           </div>
         )}
 
         {/* Department tag */}
         <div className="absolute bottom-4 left-4">
-          <span className="bg-white/90 backdrop-blur-sm text-charcoal px-3 py-1.5 text-[11px] font-inter font-medium uppercase tracking-widest">
+          <span className="bg-white/90 backdrop-blur-sm text-charcoal px-3 py-1.5 text-[10px] font-inter font-medium uppercase tracking-[0.15em]">
             {property.department === 'sales' ? 'For Sale' : 'To Let'}
           </span>
         </div>
 
         {/* Image count */}
         {property.images.length > 1 && (
-          <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-400">
-            <span className="bg-charcoal/70 backdrop-blur-sm text-white px-3 py-1.5 text-[11px] font-inter">
+          <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <span className="bg-charcoal/60 backdrop-blur-sm text-white px-3 py-1.5 text-[10px] font-inter tracking-wide">
               {property.images.length} photos
             </span>
           </div>
@@ -59,28 +59,28 @@ export default function PropertyCard({ property, featured = false }: PropertyCar
       </div>
 
       {/* Content */}
-      <div className="pt-5 space-y-2.5">
+      <div className="pt-5 space-y-2">
         {/* Price */}
-        <p className="font-cormorant text-[1.5rem] text-charcoal font-normal leading-tight">
+        <p className="font-cormorant text-[1.4rem] text-charcoal font-normal leading-tight">
           {formatPriceFull(property.price, property.department, property.price_qualifier)}
         </p>
 
         {/* Address */}
-        <h3 className="font-inter text-small font-medium text-charcoal group-hover:text-brand transition-colors duration-300">
+        <h3 className="font-inter text-[13px] font-medium text-charcoal group-hover:text-brand transition-colors duration-500">
           {address}
         </h3>
 
         {/* Location */}
-        <p className="text-tiny text-slate font-inter">
+        <p className="text-[12px] text-slate/70 font-inter">
           {property.city}{property.postcode ? `, ${property.postcode}` : ''}
         </p>
 
         {/* Features */}
         {features.length > 0 && (
-          <div className="flex items-center gap-4 pt-1">
+          <div className="flex items-center gap-3 pt-1">
             {features.map((f, i) => (
-              <span key={i} className="text-tiny font-inter text-slate/80 flex items-center gap-1.5">
-                {i > 0 && <span className="w-1 h-1 bg-taupe rounded-full" />}
+              <span key={i} className="text-[12px] font-inter text-slate/60 flex items-center gap-2">
+                {i > 0 && <span className="w-0.5 h-0.5 bg-taupe rounded-full" />}
                 {f}
               </span>
             ))}
@@ -89,8 +89,9 @@ export default function PropertyCard({ property, featured = false }: PropertyCar
 
         {/* View link */}
         <div className="pt-2">
-          <span className="text-tiny font-inter font-medium uppercase tracking-widest text-brand opacity-0 group-hover:opacity-100 transition-all duration-400 translate-y-1 group-hover:translate-y-0 inline-block">
-            View Property &rarr;
+          <span className="inline-flex items-center gap-2 text-[11px] font-inter font-medium uppercase tracking-[0.15em] text-brand opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+            View Property
+            <span className="w-0 group-hover:w-4 h-px bg-brand transition-all duration-500" />
           </span>
         </div>
       </div>

@@ -30,7 +30,7 @@ export default function PropertySourcingPage() {
         <div className="container-content">
           <div className="max-w-2xl mb-20">
             <h2 className="heading-title text-charcoal">We&apos;ll Find Your Perfect Home</h2>
-            <div className="divider-gold mt-6 mb-8" />
+            <div className="divider-brand mt-6 mb-8" />
             <p className="text-body text-slate font-inter font-light leading-relaxed">
               Searching for a home in Wimbledon can be time-consuming and competitive. Our property sourcing service puts a local expert in your corner, dedicated entirely to finding the right property for you.
             </p>
@@ -43,7 +43,7 @@ export default function PropertySourcingPage() {
           <div className="space-y-12">
             {steps.map((item) => (
               <div key={item.step} className="flex gap-8 items-start">
-                <span className="font-cormorant text-4xl font-light text-gold flex-shrink-0 w-12">{item.step}</span>
+                <span className="font-cormorant text-4xl font-light text-brand flex-shrink-0 w-12">{item.step}</span>
                 <div className="pb-12 border-b border-taupe/20 flex-1">
                   <h3 className="heading-section text-charcoal mb-3">{item.title}</h3>
                   <p className="text-body text-slate font-inter font-light leading-relaxed">{item.description}</p>
@@ -62,7 +62,7 @@ export default function PropertySourcingPage() {
           </p>
           <Link
             href="/register"
-            className="inline-block mt-8 bg-gold text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+            className="inline-block mt-8 bg-brand text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
           >
             Register Your Requirements
           </Link>

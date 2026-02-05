@@ -50,7 +50,7 @@ export default function EnquiryForm({ propertyAddress, propertyId, type = 'viewi
       )}
       <Textarea id="message" label="Message" placeholder="Any additional details..." />
       <div className="flex items-start gap-3 pt-2">
-        <input type="checkbox" id="gdpr" required className="mt-1 accent-gold" />
+        <input type="checkbox" id="gdpr" required className="mt-1 accent-brand" />
         <label htmlFor="gdpr" className="text-tiny text-slate font-inter">
           I consent to Elizabeth Wightwick storing my details to respond to this enquiry.
         </label>

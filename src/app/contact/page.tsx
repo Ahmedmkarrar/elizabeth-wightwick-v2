@@ -38,7 +38,7 @@ export default function ContactPage() {
               <h2 className="heading-title text-charcoal mb-8">Our Details</h2>
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <MapPinIcon className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
+                  <MapPinIcon className="w-5 h-5 text-brand mt-1 flex-shrink-0" />
                   <div>
                     <p className="text-body font-inter text-charcoal font-medium">Office</p>
                     <p className="text-small text-slate font-inter font-light mt-1">
@@ -50,7 +50,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <PhoneIcon className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
+                  <PhoneIcon className="w-5 h-5 text-brand mt-1 flex-shrink-0" />
                   <div>
                     <p className="text-body font-inter text-charcoal font-medium">Phone</p>
                     <a href="tel:02035973484" className="text-small text-slate font-inter font-light mt-1 block hover:text-charcoal transition-colors">
@@ -60,7 +60,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <EnvelopeIcon className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
+                  <EnvelopeIcon className="w-5 h-5 text-brand mt-1 flex-shrink-0" />
                   <div>
                     <p className="text-body font-inter text-charcoal font-medium">Email</p>
                     <a href="mailto:info@elizabeth-wightwick.co.uk" className="text-small text-slate font-inter font-light mt-1 block hover:text-charcoal transition-colors">
@@ -70,7 +70,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <ClockIcon className="w-5 h-5 text-gold mt-1 flex-shrink-0" />
+                  <ClockIcon className="w-5 h-5 text-brand mt-1 flex-shrink-0" />
                   <div>
                     <p className="text-body font-inter text-charcoal font-medium">Opening Hours</p>
                     <div className="text-small text-slate font-inter font-light mt-1 space-y-1">

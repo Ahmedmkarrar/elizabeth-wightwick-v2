@@ -33,7 +33,7 @@ export default function PropertyManagementPage() {
         <div className="container-content">
           <div className="max-w-2xl mb-16">
             <h2 className="heading-title text-charcoal">Full Management Service</h2>
-            <div className="divider-gold mt-6 mb-8" />
+            <div className="divider-brand mt-6 mb-8" />
             <p className="text-body text-slate font-inter font-light leading-relaxed">
               Our full management service is designed for landlords who want a truly hands-off experience. From the moment a tenancy begins, we take care of everything &mdash; from collecting rent and coordinating repairs to managing compliance and conducting inspections.
             </p>
@@ -62,7 +62,7 @@ export default function PropertyManagementPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-block mt-8 bg-gold text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+            className="inline-block mt-8 bg-brand text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
           >
             Contact Us
           </Link>

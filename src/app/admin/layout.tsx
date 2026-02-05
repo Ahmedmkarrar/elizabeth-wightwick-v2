@@ -1,16 +1,13 @@
-import AdminNav from '@/components/layout/AdminNav';
+import AdminShell from '@/components/layout/AdminShell';
+
+export const metadata = {
+  title: 'Admin | Elizabeth Wightwick',
+};
 
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="flex min-h-screen bg-cream">
-      <AdminNav />
-      <main className="flex-1 p-8 overflow-auto">
-        {children}
-      </main>
-    </div>
-  );
+  return <AdminShell>{children}</AdminShell>;
 }

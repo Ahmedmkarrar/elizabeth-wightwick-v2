@@ -52,7 +52,7 @@ export default function ContactForm() {
       </div>
       <Textarea id="message" label="Message" placeholder="How can we help?" required />
       <div className="flex items-start gap-3 pt-2">
-        <input type="checkbox" id="gdpr-contact" required className="mt-1 accent-gold" />
+        <input type="checkbox" id="gdpr-contact" required className="mt-1 accent-brand" />
         <label htmlFor="gdpr-contact" className="text-tiny text-slate font-inter">
           I consent to Elizabeth Wightwick storing my details to respond to this enquiry.
           Your data will be handled in accordance with our privacy policy.

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Image from 'next/image';
 import { mockProperties } from '@/lib/mock-data';
 import PropertyGrid from '@/components/properties/PropertyGrid';
 import { motion } from 'framer-motion';
@@ -17,13 +18,25 @@ export default function BuyPage() {
 
   return (
     <>
-      <section className="pt-32 pb-12">
-        <div className="container-wide">
+      {/* Hero Banner */}
+      <section className="relative h-[45vh] min-h-[320px] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80"
+            alt="Properties for sale"
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/20 to-charcoal/30" />
+        </div>
+        <div className="container-wide relative z-10 pb-12">
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4 }}
-            className="text-tiny font-inter font-medium uppercase tracking-widest text-brand"
+            className="text-[11px] font-inter font-medium uppercase tracking-[0.3em] text-white/60"
           >
             Properties for Sale
           </motion.span>
@@ -31,31 +44,23 @@ export default function BuyPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="heading-display text-charcoal mt-3"
+            className="font-cormorant text-[2.5rem] md:text-[3.5rem] font-light text-white mt-3 leading-tight"
           >
             Find Your Home
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-4 text-body text-slate font-inter font-light max-w-2xl"
-          >
-            Discover exceptional homes for sale in Wimbledon Village and South West London.
-            Each property is carefully selected for its character, quality and appeal.
-          </motion.p>
         </div>
       </section>
-      <section className="section-padding pt-0">
+
+      <section className="section-padding">
         <div className="container-wide">
           <div className="flex items-center justify-between mb-10 border-b border-beige pb-6">
-            <p className="text-small font-inter text-slate">
-              <span className="text-charcoal font-medium">{properties.length}</span> properties for sale
+            <p className="text-[13px] font-inter text-slate">
+              <span className="text-charcoal font-medium">{properties.length}</span> properties available
             </p>
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value)}
-              className="bg-white border border-taupe/40 px-4 py-2 text-small font-inter text-charcoal focus:outline-none"
+              className="bg-white border border-taupe/30 px-4 py-2.5 text-[13px] font-inter text-charcoal focus:outline-none focus:border-brand/50 transition-colors"
             >
               <option value="price_desc">Price: High to Low</option>
               <option value="price_asc">Price: Low to High</option>

@@ -49,12 +49,12 @@ export default function ValuationPage() {
               </div>
 
               <div className="mt-12 p-8 bg-white">
-                <p className="text-tiny font-inter font-medium uppercase tracking-widest text-gold mb-3">
+                <p className="text-tiny font-inter font-medium uppercase tracking-widest text-brand mb-3">
                   Prefer to speak to us?
                 </p>
                 <p className="text-body font-inter text-charcoal">
                   Call us on{' '}
-                  <a href="tel:02035973484" className="text-gold hover:text-gold-dark transition-colors">
+                  <a href="tel:02035973484" className="text-brand hover:text-brand-dark transition-colors">
                     0203 597 3484
                   </a>
                 </p>

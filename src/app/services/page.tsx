@@ -57,14 +57,14 @@ export default function ServicesPage() {
           {services.map((service) => (
             <div key={service.number} className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
               <div>
-                <span className="font-cormorant text-5xl font-light text-gold">{service.number}</span>
+                <span className="font-cormorant text-5xl font-light text-brand">{service.number}</span>
                 <h2 className="heading-title text-charcoal mt-4 mb-6">{service.title}</h2>
                 <p className="text-body text-slate font-inter font-light leading-relaxed">
                   {service.description}
                 </p>
                 <Link
                   href={service.href}
-                  className="inline-block mt-8 bg-gold text-white px-7 py-3 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors duration-400"
+                  className="inline-block mt-8 bg-brand text-white px-7 py-3 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors duration-400"
                 >
                   Learn More
                 </Link>
@@ -75,7 +75,7 @@ export default function ServicesPage() {
                 </p>
                 {service.highlights.map((item) => (
                   <div key={item} className="flex items-center gap-4 py-3 border-b border-taupe/20">
-                    <div className="w-1.5 h-1.5 bg-gold rounded-full flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-brand rounded-full flex-shrink-0" />
                     <span className="text-body font-inter text-charcoal">{item}</span>
                   </div>
                 ))}
@@ -95,7 +95,7 @@ export default function ServicesPage() {
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="bg-gold text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+              className="bg-brand text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
             >
               Get in Touch
             </Link>

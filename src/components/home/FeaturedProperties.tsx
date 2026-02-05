@@ -24,7 +24,7 @@ export default function FeaturedProperties() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.4 }}
-              className="text-tiny font-inter font-medium uppercase tracking-widest text-brand"
+              className="text-[11px] font-inter font-medium uppercase tracking-[0.3em] text-brand"
             >
               Featured
             </motion.span>
@@ -33,7 +33,7 @@ export default function FeaturedProperties() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="heading-display text-charcoal mt-3"
+              className="font-cormorant text-[2.25rem] md:text-[2.75rem] font-light text-charcoal mt-3"
             >
               Latest Properties
             </motion.h2>
@@ -47,9 +47,10 @@ export default function FeaturedProperties() {
           >
             <Link
               href="/buy"
-              className="text-small font-inter text-charcoal border-b border-charcoal pb-0.5 hover:text-brand hover:border-brand transition-colors duration-400"
+              className="group inline-flex items-center gap-2 text-[12px] font-inter font-medium uppercase tracking-[0.15em] text-charcoal hover:text-brand transition-colors duration-500"
             >
-              View All Properties
+              View All
+              <span className="w-4 h-px bg-charcoal group-hover:w-8 group-hover:bg-brand transition-all duration-500" />
             </Link>
           </motion.div>
         </div>
@@ -67,25 +68,32 @@ export default function FeaturedProperties() {
                 src={hero.images[0]}
                 alt={hero.title}
                 fill
-                className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
                 sizes="100vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
             <div className="mt-6 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
               <div>
-                <h3 className="heading-title text-charcoal group-hover:text-brand transition-colors">
+                <h3 className="font-cormorant text-[1.75rem] md:text-[2rem] font-light text-charcoal group-hover:text-brand transition-colors duration-500">
                   {hero.title}
                 </h3>
-                <p className="text-body text-slate font-inter font-light mt-1">{hero.address_line_1}, {hero.city}</p>
+                <p className="text-[14px] text-slate font-inter font-light mt-1">{hero.address_line_1}, {hero.city}</p>
               </div>
-              <div className="text-right">
-                <p className="font-cormorant text-subtitle text-charcoal">
+              <div className="text-left md:text-right">
+                <p className="font-cormorant text-[1.5rem] md:text-subtitle text-charcoal">
                   {formatPrice(hero.price, hero.department)}
                 </p>
-                <div className="flex items-center gap-4 mt-1 text-small text-slate font-inter justify-end">
+                <div className="flex items-center gap-4 mt-1 text-[13px] text-slate/70 font-inter md:justify-end">
                   <span>{hero.bedrooms} beds</span>
+                  <span className="w-0.5 h-0.5 bg-taupe rounded-full" />
                   <span>{hero.bathrooms} baths</span>
-                  {(hero.reception_rooms ?? 0) > 0 && <span>{hero.reception_rooms} reception</span>}
+                  {(hero.reception_rooms ?? 0) > 0 && (
+                    <>
+                      <span className="w-0.5 h-0.5 bg-taupe rounded-full" />
+                      <span>{hero.reception_rooms} reception</span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -108,20 +116,22 @@ export default function FeaturedProperties() {
                     src={property.images[0]}
                     alt={property.title}
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="object-cover transition-transform duration-[1000ms] ease-out group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
-                <div className="mt-4">
-                  <h3 className="heading-section text-charcoal group-hover:text-brand transition-colors">
-                    {property.title}
-                  </h3>
-                  <p className="text-small text-slate font-inter font-light mt-1">{property.address_line_1}, {property.city}</p>
-                  <p className="font-cormorant text-section text-charcoal mt-2">
+                <div className="mt-5">
+                  <p className="font-cormorant text-[1.35rem] text-charcoal font-normal">
                     {formatPrice(property.price, property.department)}
                   </p>
-                  <div className="flex items-center gap-3 mt-2 text-tiny text-slate font-inter">
+                  <h3 className="font-inter text-[13px] font-medium text-charcoal group-hover:text-brand transition-colors duration-300 mt-2">
+                    {property.title}
+                  </h3>
+                  <p className="text-[12px] text-slate/70 font-inter mt-1">{property.address_line_1}, {property.city}</p>
+                  <div className="flex items-center gap-3 mt-2.5 text-[12px] text-slate/60 font-inter">
                     <span>{property.bedrooms} beds</span>
+                    <span className="w-0.5 h-0.5 bg-taupe rounded-full" />
                     <span>{property.bathrooms} baths</span>
                   </div>
                 </div>

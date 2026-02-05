@@ -121,7 +121,7 @@ export default function RegisterForm() {
       <Input id="reg-phone" label="Phone" type="tel" placeholder="Your phone number" />
 
       <div className="flex items-start gap-3 pt-2">
-        <input type="checkbox" id="gdpr-reg" required className="mt-1 accent-gold" />
+        <input type="checkbox" id="gdpr-reg" required className="mt-1 accent-brand" />
         <label htmlFor="gdpr-reg" className="text-tiny text-slate font-inter">
           I consent to Elizabeth Wightwick storing my details and contacting me about properties matching my requirements.
         </label>

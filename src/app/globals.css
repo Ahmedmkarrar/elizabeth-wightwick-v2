@@ -96,9 +96,28 @@
   }
 }
 
+/* Ken Burns animation for hero images */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 8s ease-out forwards;
+}
+
+/* Smooth image loading */
+img[data-nimg] {
+  transition: opacity 0.4s ease;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -106,7 +125,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-taupe rounded-full;
+  @apply bg-taupe/60 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {

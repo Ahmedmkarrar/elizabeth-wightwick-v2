@@ -40,7 +40,7 @@ export default function SalesServicePage() {
         <div className="container-content">
           <div className="max-w-2xl">
             <h2 className="heading-title text-charcoal">Why Choose Us</h2>
-            <div className="divider-gold mt-6 mb-8" />
+            <div className="divider-brand mt-6 mb-8" />
             <p className="text-body text-slate font-inter font-light leading-relaxed">
               Selling your home is one of the most significant decisions you will make. At Elizabeth Wightwick, we combine over 30 years of local expertise with a genuinely personal approach. As an independent, family-run agency, you will always deal directly with us &mdash; never a junior or a call centre.
             </p>
@@ -57,7 +57,7 @@ export default function SalesServicePage() {
           <div className="space-y-12">
             {process.map((item) => (
               <div key={item.step} className="flex gap-8 items-start">
-                <span className="font-cormorant text-4xl font-light text-gold flex-shrink-0 w-12">{item.step}</span>
+                <span className="font-cormorant text-4xl font-light text-brand flex-shrink-0 w-12">{item.step}</span>
                 <div className="pb-12 border-b border-taupe/20 flex-1">
                   <h3 className="heading-section text-charcoal mb-3">{item.title}</h3>
                   <p className="text-body text-slate font-inter font-light leading-relaxed">{item.description}</p>
@@ -76,7 +76,7 @@ export default function SalesServicePage() {
           </p>
           <Link
             href="/valuation"
-            className="inline-block mt-8 bg-gold text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+            className="inline-block mt-8 bg-brand text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
           >
             Request Free Valuation
           </Link>

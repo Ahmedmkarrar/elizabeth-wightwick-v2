@@ -25,7 +25,7 @@ export default function AdminPropertiesPage() {
         </div>
         <Link
           href="/admin/properties/new"
-          className="bg-gold text-white px-6 py-3 text-small font-inter tracking-wide hover:bg-gold-dark transition-colors"
+          className="bg-brand text-white px-6 py-3 text-small font-inter tracking-wide hover:bg-brand-dark transition-colors"
         >
           + Add Property
         </Link>
@@ -88,9 +88,9 @@ export default function AdminPropertiesPage() {
                 </td>
                 <td className="py-3 px-4">
                   <span className={`inline-block px-2 py-1 text-[10px] font-inter font-medium uppercase tracking-wider ${
-                    property.status === 'available' ? 'bg-forest/10 text-forest' :
-                    property.status === 'let_agreed' ? 'bg-gold/10 text-gold-dark' :
-                    property.status === 'under_offer' ? 'bg-gold/10 text-gold-dark' :
+                    property.status === 'available' ? 'bg-brand-dark/10 text-brand-dark' :
+                    property.status === 'let_agreed' ? 'bg-brand/10 text-brand-dark' :
+                    property.status === 'under_offer' ? 'bg-brand/10 text-brand-dark' :
                     'bg-slate/10 text-slate'
                   }`}>
                     {property.status.replace('_', ' ')}
@@ -98,7 +98,7 @@ export default function AdminPropertiesPage() {
                 </td>
                 <td className="py-3 px-4 text-small font-inter">
                   {property.featured ? (
-                    <span className="text-gold">Yes</span>
+                    <span className="text-brand">Yes</span>
                   ) : (
                     <span className="text-slate/40">No</span>
                   )}
@@ -107,7 +107,7 @@ export default function AdminPropertiesPage() {
                   <div className="flex gap-3">
                     <Link
                       href={`/admin/properties/${property.id}/edit`}
-                      className="text-tiny font-inter text-charcoal hover:text-gold transition-colors"
+                      className="text-tiny font-inter text-charcoal hover:text-brand transition-colors"
                     >
                       Edit
                     </Link>
