@@ -33,6 +33,7 @@ export function formatPriceFull(price: number, department?: string, qualifier?: 
 export function getStatusLabel(status: string): string {
   const labels: Record<string, string> = {
     available: 'Available',
+    new_listing: 'New Listing',
     let_agreed: 'Let Agreed',
     sold: 'Sold',
     under_offer: 'Under Offer',
@@ -43,11 +44,19 @@ export function getStatusLabel(status: string): string {
 export function getStatusColor(status: string): string {
   const colors: Record<string, string> = {
     available: 'bg-brand text-white',
+    new_listing: 'bg-brand text-white',
     let_agreed: 'bg-brand-dark text-white',
     sold: 'bg-slate text-white',
     under_offer: 'bg-brand-dark text-white',
   };
   return colors[status] || 'bg-slate text-white';
+}
+
+export function isNewListing(createdAt: string): boolean {
+  const created = new Date(createdAt);
+  const thirtyDaysAgo = new Date();
+  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  return created >= thirtyDaysAgo;
 }
 
 export function slugify(text: string): string {

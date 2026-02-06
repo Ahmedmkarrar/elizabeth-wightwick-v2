@@ -25,7 +25,7 @@ export default function PropertyGrid({ properties, columns = 3 }: PropertyGridPr
     <div
       className={`grid grid-cols-1 md:grid-cols-2 ${
         columns === 3 ? 'lg:grid-cols-3' : ''
-      } gap-10 lg:gap-12`}
+      } gap-8 lg:gap-10`}
     >
       {properties.map((property, i) => (
         <motion.div

@@ -26,7 +26,7 @@
 
 @layer components {
   .section-padding {
-    @apply py-section-mobile md:py-20 lg:py-section;
+    @apply py-section-mobile md:py-24 lg:py-section;
   }
 
   .container-wide {
@@ -39,6 +39,10 @@
 
   .container-narrow {
     @apply max-w-narrow mx-auto px-5 sm:px-8 lg:px-12;
+  }
+
+  .container-xl {
+    @apply max-w-container-xl mx-auto px-5 sm:px-8 lg:px-12;
   }
 
   .heading-hero {
@@ -77,6 +81,24 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .nav-link-underline {
+    position: relative;
+  }
+  .nav-link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.4s ease;
+  }
+  .nav-link-underline:hover::after,
+  .nav-link-underline.active::after {
+    width: 100%;
   }
 
   .animate-delay-100 {

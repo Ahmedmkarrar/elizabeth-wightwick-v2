@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, ChevronDownIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -59,17 +59,49 @@ export default function Navigation() {
 
   if (isAdmin) return null;
 
+  const showUtilityBar = !isHome || isScrolled;
+
   return (
     <>
+      {/* Utility Bar */}
+      <div
+        className={cn(
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          showUtilityBar
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 -translate-y-full pointer-events-none'
+        )}
+      >
+        <div className="bg-charcoal text-white/70">
+          <div className="container-wide flex items-center justify-between h-9">
+            <div className="flex items-center gap-6">
+              <a href="tel:02035973484" className="flex items-center gap-1.5 text-[11px] font-inter tracking-wide hover:text-white transition-colors">
+                <PhoneIcon className="w-3 h-3" />
+                0203 597 3484
+              </a>
+              <a href="mailto:info@elizabeth-wightwick.co.uk" className="hidden sm:flex items-center gap-1.5 text-[11px] font-inter tracking-wide hover:text-white transition-colors">
+                <EnvelopeIcon className="w-3 h-3" />
+                info@elizabeth-wightwick.co.uk
+              </a>
+            </div>
+            <span className="text-[10px] font-inter tracking-wide hidden md:block">
+              60 High Street, Wimbledon Village, SW19 5EE
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navigation */}
       <header
         className={cn(
-          'fixed top-0 left-0 right-0 z-40 transition-all duration-600',
+          'fixed left-0 right-0 z-40 transition-all duration-500',
+          showUtilityBar ? 'top-9' : 'top-0',
           isScrolled || !isHome
             ? 'bg-white/95 backdrop-blur-sm shadow-sm'
             : 'bg-transparent'
         )}
       >
-        <nav className="container-wide flex items-center justify-between h-20 lg:h-24">
+        <nav className="container-wide flex items-center justify-between h-20 lg:h-[72px]">
           {/* Logo */}
           <Link href="/" className="relative z-50">
             <span
@@ -92,11 +124,11 @@ export default function Navigation() {
                       onClick={() => setActiveDropdown(activeDropdown === link.href ? null : link.href)}
                       onMouseEnter={() => setActiveDropdown(link.href)}
                       className={cn(
-                        'text-small font-inter font-normal tracking-wide transition-colors duration-400 relative flex items-center gap-1',
+                        'text-small font-inter font-normal tracking-wide transition-colors duration-400 nav-link-underline flex items-center gap-1',
                         isScrolled || !isHome
                           ? 'text-charcoal hover:text-brand'
                           : 'text-white/90 hover:text-white',
-                        pathname.startsWith(link.href) && 'after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-px after:bg-current'
+                        pathname.startsWith(link.href) && 'active'
                       )}
                     >
                       {link.label}
@@ -113,7 +145,7 @@ export default function Navigation() {
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.2, ease: 'easeOut' }}
                           onMouseLeave={() => setActiveDropdown(null)}
-                          className="absolute top-full left-0 mt-3 bg-white shadow-lg border border-beige min-w-[260px]"
+                          className="absolute top-full left-0 mt-3 bg-white shadow-lg min-w-[260px]"
                         >
                           <div className="py-2">
                             {link.children.map((child) => (
@@ -121,8 +153,8 @@ export default function Navigation() {
                                 key={child.href}
                                 href={child.href}
                                 className={cn(
-                                  'block px-6 py-3 text-small font-inter text-charcoal hover:text-brand hover:bg-beige/50 transition-colors duration-300',
-                                  pathname === child.href && 'text-brand bg-beige/30'
+                                  'block px-6 py-3 text-small font-inter text-charcoal hover:text-brand transition-colors duration-300 border-l-2 border-transparent hover:border-brand',
+                                  pathname === child.href && 'text-brand border-brand bg-beige/30'
                                 )}
                               >
                                 {child.label}
@@ -137,11 +169,11 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     className={cn(
-                      'text-small font-inter font-normal tracking-wide transition-colors duration-400 relative',
+                      'text-small font-inter font-normal tracking-wide transition-colors duration-400 nav-link-underline',
                       isScrolled || !isHome
                         ? 'text-charcoal hover:text-brand'
                         : 'text-white/90 hover:text-white',
-                      pathname === link.href && 'after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-px after:bg-current'
+                      pathname === link.href && 'active'
                     )}
                   >
                     {link.label}

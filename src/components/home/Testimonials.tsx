@@ -18,14 +18,7 @@ export default function Testimonials() {
   }, [next]);
 
   return (
-    <section className="section-padding bg-cream relative overflow-hidden">
-      {/* Decorative large quote */}
-      <div className="absolute top-12 left-1/2 -translate-x-1/2 pointer-events-none select-none">
-        <span className="font-cormorant text-[15rem] md:text-[20rem] leading-none text-brand/[0.04] font-light">
-          &ldquo;
-        </span>
-      </div>
-
+    <section className="section-padding bg-warm-white relative overflow-hidden">
       <div className="container-narrow text-center relative z-10">
         <motion.span
           initial={{ opacity: 0 }}
@@ -37,7 +30,7 @@ export default function Testimonials() {
           Testimonials
         </motion.span>
 
-        <div className="relative min-h-[280px] flex items-center justify-center mt-10">
+        <div className="relative min-h-[260px] flex items-center justify-center mt-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={current}

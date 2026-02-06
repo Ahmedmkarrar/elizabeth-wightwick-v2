@@ -8,69 +8,73 @@ const sections = [
   {
     title: 'Best of 2025',
     subtitle: 'Curated Collection',
-    description: 'The finest properties we have had the privilege of marketing this year.',
+    description: 'The finest properties we have had the privilege of marketing this year. Each one hand-selected to showcase the very best of what South West London has to offer.',
     href: '/best-of-2025',
     label: 'View Collection',
     image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80',
+    reverse: false,
   },
   {
     title: 'For Homeowners',
     subtitle: 'Our Services',
-    description: 'A bespoke service built on trust, expertise, and genuine care for your home.',
+    description: 'A bespoke service built on trust, expertise, and genuine care for your home. Whether selling, letting, or managing your property, we bring a personal approach that larger agencies simply cannot match.',
     href: '/homeowners',
     label: 'Explore Services',
     image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
+    reverse: true,
   },
 ];
 
 export default function Services() {
   return (
-    <section className="section-padding bg-beige/20">
-      <div className="container-wide">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-5">
-          {sections.map((section, i) => (
-            <motion.div
-              key={section.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.7, delay: i * 0.15 }}
-            >
-              <Link href={section.href} className="group block relative">
-                <div className="relative aspect-[4/5] sm:aspect-[3/4] lg:aspect-[4/5] overflow-hidden bg-beige">
-                  <Image
-                    src={section.image}
-                    alt={section.title}
-                    fill
-                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.06]"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent" />
+    <section className="section-padding">
+      <div className="container-wide space-y-20 lg:space-y-28">
+        {sections.map((section) => (
+          <motion.div
+            key={section.title}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center ${
+              section.reverse ? 'lg:[direction:rtl]' : ''
+            }`}
+          >
+            {/* Image */}
+            <div className={section.reverse ? 'lg:[direction:ltr]' : ''}>
+              <div className="relative aspect-[4/5] overflow-hidden bg-beige">
+                <Image
+                  src={section.image}
+                  alt={section.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </div>
 
-                  {/* Content overlay */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-10">
-                    <span className="text-[10px] font-inter font-medium uppercase tracking-[0.3em] text-white/60 mb-3">
-                      {section.subtitle}
-                    </span>
-                    <h3 className="font-cormorant text-[2rem] sm:text-[2.5rem] font-light text-white leading-tight">
-                      {section.title}
-                    </h3>
-                    <p className="mt-3 text-[13px] text-white/60 font-inter font-light leading-relaxed max-w-xs">
-                      {section.description}
-                    </p>
-                    <div className="mt-6 flex items-center gap-2">
-                      <span className="text-[11px] font-inter font-medium uppercase tracking-[0.2em] text-white/80 group-hover:text-white transition-colors duration-500">
-                        {section.label}
-                      </span>
-                      <span className="w-4 h-px bg-white/50 group-hover:w-8 transition-all duration-500" />
-                    </div>
-                  </div>
-                </div>
+            {/* Text Content */}
+            <div className={section.reverse ? 'lg:[direction:ltr]' : ''}>
+              <span className="text-[11px] font-inter font-medium uppercase tracking-[0.3em] text-brand">
+                {section.subtitle}
+              </span>
+              <h3 className="font-cormorant text-[2rem] sm:text-[2.5rem] font-light text-charcoal mt-4 leading-tight">
+                {section.title}
+              </h3>
+              <div className="w-12 h-px bg-brand/40 mt-6 mb-6" />
+              <p className="text-[15px] text-slate font-inter font-light leading-[1.8] max-w-md">
+                {section.description}
+              </p>
+              <Link
+                href={section.href}
+                className="group inline-flex items-center gap-3 mt-8 text-[12px] font-inter font-medium uppercase tracking-[0.15em] text-charcoal hover:text-brand transition-colors duration-500"
+              >
+                {section.label}
+                <span className="w-6 h-px bg-charcoal group-hover:w-10 group-hover:bg-brand transition-all duration-500" />
               </Link>
-            </motion.div>
-          ))}
-        </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function AreaHighlight() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-warm-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[650px]">
         {/* Image */}
         <div className="relative h-[450px] lg:h-auto overflow-hidden">
@@ -17,13 +17,11 @@ export default function AreaHighlight() {
             className="object-cover"
             sizes="(max-width: 1024px) 100vw, 50vw"
           />
-          {/* Subtle overlay for depth */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-charcoal/10 lg:to-white/5" />
         </div>
 
         {/* Content */}
-        <div className="flex items-center bg-white">
-          <div className="px-8 py-16 lg:px-20 lg:py-20 max-w-xl">
+        <div className="flex items-center">
+          <div className="px-8 py-20 lg:px-20 lg:py-24 max-w-xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -50,10 +48,10 @@ export default function AreaHighlight() {
               </p>
               <Link
                 href="/wimbledon"
-                className="group inline-flex items-center gap-2 mt-8 text-[12px] font-inter font-medium uppercase tracking-[0.15em] text-charcoal hover:text-brand transition-colors duration-500"
+                className="group inline-flex items-center gap-3 mt-10 text-[12px] font-inter font-medium uppercase tracking-[0.15em] text-charcoal hover:text-brand transition-colors duration-500"
               >
                 Explore Wimbledon
-                <span className="w-4 h-px bg-charcoal group-hover:w-8 group-hover:bg-brand transition-all duration-500" />
+                <span className="w-6 h-px bg-charcoal group-hover:w-10 group-hover:bg-brand transition-all duration-500" />
               </Link>
             </motion.div>
           </div>
