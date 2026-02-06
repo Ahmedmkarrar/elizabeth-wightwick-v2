@@ -13,6 +13,7 @@
 
   body {
     @apply bg-cream text-charcoal font-inter text-body;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -94,7 +95,7 @@
     width: 0;
     height: 1px;
     background: currentColor;
-    transition: width 0.4s ease;
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .nav-link-underline:hover::after,
   .nav-link-underline.active::after {
@@ -132,14 +133,30 @@
   animation: ken-burns 8s ease-out forwards;
 }
 
-/* Smooth image loading */
-img[data-nimg] {
-  transition: opacity 0.4s ease;
+/* Smooth page transitions */
+main {
+  animation: pageIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Scrollbar */
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth image loading */
+img[data-nimg] {
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Premium scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -147,9 +164,14 @@ img[data-nimg] {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-taupe/60 rounded-full;
+  @apply bg-brand/30 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-slate;
+  @apply bg-brand/50;
+}
+
+/* Smooth link transitions globally */
+a {
+  transition: color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }

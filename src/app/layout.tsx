@@ -3,6 +3,8 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import ListingPopup from "@/components/layout/ListingPopup";
+import SplashScreen from "@/components/ui/SplashScreen";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 export const metadata: Metadata = {
   title: {
@@ -43,6 +45,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <SplashScreen />
+        <CustomCursor />
         <Navigation />
         <main>{children}</main>
         <Footer />

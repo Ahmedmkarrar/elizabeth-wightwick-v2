@@ -7,6 +7,7 @@ import { mockProperties } from '@/lib/mock-data';
 import { formatPrice, cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Badge from '@/components/ui/Badge';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 
 type FilterTab = 'all' | 'sales' | 'lettings';
 
@@ -16,6 +17,74 @@ const tabs: { key: FilterTab; label: string }[] = [
   { key: 'lettings', label: 'To Let' },
 ];
 
+function PropertyImageHover({ property }: { property: typeof mockProperties[0] }) {
+  const [imgIndex, setImgIndex] = useState(0);
+  const images = property.images.slice(0, 4);
+
+  return (
+    <div
+      className="relative aspect-[3/4] overflow-hidden bg-beige"
+      onMouseLeave={() => setImgIndex(0)}
+    >
+      {/* Images */}
+      {images.map((img, i) => (
+        <div
+          key={i}
+          className="absolute inset-0 transition-opacity duration-500"
+          style={{ opacity: imgIndex === i ? 1 : 0 }}
+        >
+          <Image
+            src={img}
+            alt={property.title}
+            fill
+            className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]"
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </div>
+      ))}
+
+      {/* Hover zones to switch images */}
+      {images.length > 1 && (
+        <div className="absolute inset-0 z-10 flex">
+          {images.map((_, i) => (
+            <div
+              key={i}
+              className="flex-1"
+              onMouseEnter={() => setImgIndex(i)}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Image indicator dots */}
+      {images.length > 1 && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5">
+          {images.map((_, i) => (
+            <div
+              key={i}
+              className={`h-1 rounded-full transition-all duration-300 ${
+                imgIndex === i ? 'w-5 bg-white' : 'w-1 bg-white/50'
+              }`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Status Badge */}
+      <div className="absolute top-4 left-4 z-20">
+        <Badge status={property.status} />
+      </div>
+
+      {/* Department tag */}
+      <div className="absolute top-4 right-4 z-20">
+        <span className="bg-white/90 backdrop-blur-sm text-charcoal px-3 py-1.5 text-[9px] font-inter font-semibold uppercase tracking-[0.2em]">
+          {property.department === 'sales' ? 'Sale' : 'Let'}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function FeaturedProperties() {
   const [activeTab, setActiveTab] = useState<FilterTab>('all');
 
@@ -24,130 +93,104 @@ export default function FeaturedProperties() {
     ? allFeatured
     : allFeatured.filter((p) => p.department === activeTab);
 
-  // Show up to 6 properties
   const displayed = filtered.slice(0, 6);
 
   return (
     <section className="section-padding">
       <div className="container-wide">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-          <div>
-            <motion.span
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.4 }}
-              className="text-[11px] font-inter font-medium uppercase tracking-[0.3em] text-brand"
-            >
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14">
+          <ScrollReveal>
+            <span className="text-[11px] font-inter font-medium uppercase tracking-[0.3em] text-brand">
               Featured
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-cormorant text-[2.25rem] md:text-[2.75rem] font-light text-charcoal mt-3"
-            >
+            </span>
+            <h2 className="font-cormorant text-[2.25rem] md:text-[3rem] font-light text-charcoal mt-3">
               Latest Properties
-            </motion.h2>
-          </div>
+            </h2>
+          </ScrollReveal>
 
           {/* Tab Filters */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-6 md:mt-0 flex items-center gap-1"
-          >
-            {tabs.map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setActiveTab(tab.key)}
-                className={cn(
-                  'px-5 py-2 text-[12px] font-inter font-medium tracking-wide transition-all duration-300 rounded-full',
-                  activeTab === tab.key
-                    ? 'bg-brand text-white'
-                    : 'text-charcoal hover:bg-beige'
-                )}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </motion.div>
+          <ScrollReveal delay={0.2}>
+            <div className="mt-6 md:mt-0 flex items-center gap-1 bg-beige rounded-full p-1">
+              {tabs.map((tab) => (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveTab(tab.key)}
+                  className={cn(
+                    'relative px-6 py-2.5 text-[11px] font-inter font-medium tracking-[0.1em] uppercase transition-all duration-400 rounded-full',
+                    activeTab === tab.key
+                      ? 'text-white'
+                      : 'text-charcoal hover:text-brand'
+                  )}
+                >
+                  {activeTab === tab.key && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-brand rounded-full"
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{tab.label}</span>
+                </button>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
 
         {/* 2-Column Property Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {displayed.map((property, i) => (
-            <motion.div
-              key={property.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-            >
+            <ScrollReveal key={property.id} delay={i * 0.1}>
               <Link href={`/properties/${property.id}`} className="group block">
-                {/* Taller Image - 3:4 Aspect */}
-                <div className="relative aspect-[3/4] overflow-hidden bg-beige">
-                  <Image
-                    src={property.main_image}
-                    alt={property.title}
-                    fill
-                    className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  {/* Status Badge */}
-                  <div className="absolute top-4 left-4 z-10">
-                    <Badge status={property.status} />
-                  </div>
-                  {/* Department tag */}
-                  <div className="absolute bottom-4 left-4">
-                    <span className="bg-white/90 backdrop-blur-sm text-charcoal px-3 py-1.5 text-[10px] font-inter font-medium uppercase tracking-[0.15em]">
-                      {property.department === 'sales' ? 'For Sale' : 'To Let'}
-                    </span>
-                  </div>
-                </div>
+                <PropertyImageHover property={property} />
 
                 {/* Info */}
-                <div className="mt-5">
-                  <h3 className="font-cormorant text-[1.5rem] md:text-[1.75rem] font-light text-charcoal group-hover:text-brand transition-colors duration-500">
+                <div className="mt-6">
+                  <h3 className="font-cormorant text-[1.5rem] md:text-[1.85rem] font-light text-charcoal group-hover:text-brand transition-colors duration-500">
                     {property.title}
                   </h3>
-                  <p className="text-[13px] text-slate font-inter font-light mt-1">
+                  <p className="text-[13px] text-slate font-inter font-light mt-1.5">
                     {property.address_line_1}, {property.city}
                   </p>
-                  <p className="font-cormorant text-[1.25rem] text-charcoal mt-2">
-                    {formatPrice(property.price, property.department)}
-                  </p>
-                  <div className="flex items-center gap-3 mt-2 text-[12px] text-slate/60 font-inter">
-                    <span>{property.bedrooms} beds</span>
-                    <span className="w-0.5 h-0.5 bg-taupe rounded-full" />
-                    <span>{property.bathrooms} baths</span>
-                    {(property.reception_rooms ?? 0) > 0 && (
-                      <>
-                        <span className="w-0.5 h-0.5 bg-taupe rounded-full" />
-                        <span>{property.reception_rooms} recep</span>
-                      </>
-                    )}
+                  <div className="flex items-center justify-between mt-3">
+                    <p className="font-cormorant text-[1.35rem] text-charcoal">
+                      {formatPrice(property.price, property.department)}
+                    </p>
+                    <div className="flex items-center gap-4 text-[12px] text-slate/60 font-inter">
+                      <span>{property.bedrooms} beds</span>
+                      <span className="w-0.5 h-0.5 bg-taupe rounded-full" />
+                      <span>{property.bathrooms} baths</span>
+                      {(property.reception_rooms ?? 0) > 0 && (
+                        <>
+                          <span className="w-0.5 h-0.5 bg-taupe rounded-full" />
+                          <span>{property.reception_rooms} recep</span>
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </ScrollReveal>
           ))}
         </div>
 
         {/* View All Link */}
-        <div className="text-center mt-14">
-          <Link
-            href="/buy"
-            className="group inline-flex items-center gap-3 text-[12px] font-inter font-medium uppercase tracking-[0.15em] text-charcoal hover:text-brand transition-colors duration-500"
-          >
-            View All Properties
-            <span className="w-6 h-px bg-charcoal group-hover:w-10 group-hover:bg-brand transition-all duration-500" />
-          </Link>
-        </div>
+        <ScrollReveal delay={0.3}>
+          <div className="text-center mt-16">
+            <Link
+              href="/buy"
+              className="group inline-flex items-center gap-4 text-[11px] font-inter font-medium uppercase tracking-[0.2em] text-charcoal hover:text-brand transition-colors duration-500"
+            >
+              <span className="relative">
+                View All Properties
+                <span className="absolute -bottom-1 left-0 w-0 group-hover:w-full h-px bg-brand transition-all duration-500" />
+              </span>
+              <svg className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

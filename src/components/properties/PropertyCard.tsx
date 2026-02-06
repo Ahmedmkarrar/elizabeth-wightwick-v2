@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Property } from '@/types';
@@ -12,7 +13,9 @@ interface PropertyCardProps {
 }
 
 export default function PropertyCard({ property }: PropertyCardProps) {
+  const [imgIndex, setImgIndex] = useState(0);
   const address = [property.address_line_1, property.address_line_2].filter(Boolean).join(', ');
+  const images = property.images.slice(0, 4);
 
   const features = [
     property.bedrooms ? `${property.bedrooms} bed${property.bedrooms !== 1 ? 's' : ''}` : null,
@@ -20,53 +23,80 @@ export default function PropertyCard({ property }: PropertyCardProps) {
     (property.reception_rooms ?? 0) > 0 ? `${property.reception_rooms} recep` : null,
   ].filter(Boolean);
 
-  // Determine badge to show
   const showNewListing = property.status === 'available' && isNewListing(property.created_at);
   const badgeStatus = showNewListing ? 'new_listing' : property.status;
 
   return (
     <Link href={`/properties/${property.id}`} className="group block">
-      {/* Image - Portrait 3:4 */}
-      <div className="relative aspect-[3/4] overflow-hidden bg-beige">
-        <Image
-          src={property.main_image}
-          alt={address}
-          fill
-          className="object-cover transition-all duration-[1000ms] ease-out group-hover:scale-[1.03]"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
+      {/* Image - Portrait 3:4 with hover slider */}
+      <div
+        className="relative aspect-[3/4] overflow-hidden bg-beige"
+        onMouseLeave={() => setImgIndex(0)}
+      >
+        {/* Images */}
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className="absolute inset-0 transition-opacity duration-500"
+            style={{ opacity: imgIndex === i ? 1 : 0 }}
+          >
+            <Image
+              src={img}
+              alt={address}
+              fill
+              className="object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-[1.03]"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+          </div>
+        ))}
 
-        {/* Status badge - always visible */}
-        <div className="absolute top-4 left-4 z-10">
+        {/* Hover zones */}
+        {images.length > 1 && (
+          <div className="absolute inset-0 z-10 flex">
+            {images.map((_, i) => (
+              <div key={i} className="flex-1" onMouseEnter={() => setImgIndex(i)} />
+            ))}
+          </div>
+        )}
+
+        {/* Image indicator dots */}
+        {images.length > 1 && (
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1">
+            {images.map((_, i) => (
+              <div
+                key={i}
+                className={`h-[3px] rounded-full transition-all duration-300 ${
+                  imgIndex === i ? 'w-4 bg-white' : 'w-[3px] bg-white/50'
+                }`}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Status badge */}
+        <div className="absolute top-4 left-4 z-20">
           <Badge status={badgeStatus} />
         </div>
 
         {/* Department tag */}
-        <div className="absolute bottom-4 left-4">
-          <span className="bg-white/90 backdrop-blur-sm text-charcoal px-3 py-1.5 text-[10px] font-inter font-medium uppercase tracking-[0.15em]">
-            {property.department === 'sales' ? 'For Sale' : 'To Let'}
+        <div className="absolute top-4 right-4 z-20">
+          <span className="bg-white/90 backdrop-blur-sm text-charcoal px-3 py-1.5 text-[9px] font-inter font-semibold uppercase tracking-[0.2em]">
+            {property.department === 'sales' ? 'Sale' : 'Let'}
           </span>
         </div>
       </div>
 
       {/* Content */}
       <div className="pt-5 space-y-1.5">
-        {/* Title */}
         <h3 className="font-cormorant text-[1.35rem] md:text-[1.5rem] font-light text-charcoal group-hover:text-brand transition-colors duration-500">
           {property.title}
         </h3>
-
-        {/* Location */}
         <p className="text-[12px] text-slate/70 font-inter">
           {address}, {property.city}{property.postcode ? ` ${property.postcode}` : ''}
         </p>
-
-        {/* Price */}
         <p className="font-cormorant text-[1.25rem] text-charcoal font-normal">
           {formatPriceFull(property.price, property.department, property.price_qualifier)}
         </p>
-
-        {/* Features */}
         {features.length > 0 && (
           <div className="flex items-center gap-3 pt-1">
             {features.map((f, i) => (
