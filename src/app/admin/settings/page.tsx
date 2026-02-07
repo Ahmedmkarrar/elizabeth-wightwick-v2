@@ -44,7 +44,7 @@ export default function AdminSettingsPage() {
           <div className="space-y-4">
             <div>
               <label className="block text-[11px] font-inter font-medium uppercase tracking-[0.15em] text-slate/60 mb-1.5">Admin Email</label>
-              <input defaultValue="admin@elizabeth-wightwick.co.uk" className="w-full border border-beige px-4 py-2.5 text-[13px] font-inter text-charcoal focus:outline-none focus:border-brand/50 transition-colors" />
+              <input defaultValue="info@elizabeth-wightwick.co.uk" className="w-full border border-beige px-4 py-2.5 text-[13px] font-inter text-charcoal focus:outline-none focus:border-brand/50 transition-colors" />
             </div>
             <div>
               <label className="block text-[11px] font-inter font-medium uppercase tracking-[0.15em] text-slate/60 mb-1.5">New Password</label>
