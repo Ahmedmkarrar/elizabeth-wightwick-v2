@@ -61,6 +61,50 @@ export default function WhoWeArePage() {
         </div>
       </section>
 
+      {/* Meet The Team */}
+      <section className="section-padding">
+        <div className="container-content">
+          <div className="text-center mb-16">
+            <span className="text-tiny font-inter font-medium uppercase tracking-widest text-brand">Our People</span>
+            <h2 className="heading-title text-charcoal mt-4">Meet The Team</h2>
+            <div className="divider-brand mt-6 mx-auto" />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+            {[
+              {
+                name: 'Elizabeth Wightwick',
+                role: 'Director',
+                bio: 'With over a decade\u2019s professional experience in the London property market, Elizabeth set up Elizabeth Wightwick Limited in 2017 and has since grown, simply by word of mouth. Elizabeth has successfully grown market share with her vast knowledge and expertise, with the simple goal of providing the best service, tailored by her clients needs.',
+              },
+              {
+                name: 'Karlien Munro',
+                role: 'Business Coordinator',
+                bio: 'Karlien joined Elizabeth Wightwick in 2020 and maintains the business on the back end, ensuring that all property management, administrative and accounting areas are quickly and consistently dealt with, while supporting each department in growing their portfolios. Karlien has over 16 years experience within the Sales and Lettings market in Central London and Surrey and is a member of ARLA, therefore is very familiar with the constant flow of changes to the market and legislation.',
+              },
+              {
+                name: 'Sophie Gittins',
+                role: 'Senior Negotiator',
+                bio: 'Sophie joined the team in 2022 as a Senior Lettings and Sales Negotiator. Having had many years of experience in the London property market, Sophie is a skilled negotiator with extensive knowledge in both sales and lettings negotiations.',
+              },
+            ].map((member) => (
+              <div key={member.name} className="text-center">
+                <div className="w-24 h-24 rounded-full bg-brand/10 mx-auto mb-6 flex items-center justify-center">
+                  <span className="text-2xl font-cormorant font-semibold text-brand">
+                    {member.name.split(' ').map((n) => n[0]).join('')}
+                  </span>
+                </div>
+                <h3 className="heading-section text-charcoal">{member.name}</h3>
+                <p className="text-small font-inter font-medium text-brand mt-1 mb-4">{member.role}</p>
+                <p className="text-small text-slate font-inter font-light leading-relaxed">
+                  {member.bio}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Values */}
       <section className="section-padding bg-beige/30">
         <div className="container-content">
