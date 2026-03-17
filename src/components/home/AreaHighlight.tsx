@@ -19,7 +19,7 @@ export default function AreaHighlight() {
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?auto=format&fit=crop&w=1200&q=80"
+              src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80"
               alt="Wimbledon Village"
               className="absolute inset-0 w-full h-full object-cover"
             />

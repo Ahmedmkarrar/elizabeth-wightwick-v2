@@ -11,7 +11,7 @@ const sections = [
     description: 'The finest properties we have had the privilege of marketing this year. Each one hand-selected to showcase the very best of what South West London has to offer.',
     href: '/best-of-2025',
     label: 'View Collection',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
     reverse: false,
   },
   {
@@ -20,7 +20,7 @@ const sections = [
     description: 'A bespoke service built on trust, expertise, and genuine care for your home. Whether selling, letting, or managing your property, we bring a personal approach that larger agencies simply cannot match.',
     href: '/homeowners',
     label: 'Explore Services',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1200&q=80',
     reverse: true,
   },
 ];

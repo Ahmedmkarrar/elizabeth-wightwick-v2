@@ -4,37 +4,37 @@ import { motion } from 'framer-motion';
 
 const images = [
   {
-    src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
+    src: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80',
     alt: 'Luxury interior',
     span: 'col-span-1 row-span-2',
     aspect: 'aspect-[3/5]',
   },
   {
-    src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    src: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80',
     alt: 'Property exterior',
     span: 'col-span-1 row-span-1',
     aspect: 'aspect-[4/3]',
   },
   {
-    src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+    src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=800&q=80',
     alt: 'Modern kitchen',
     span: 'col-span-1 row-span-1',
     aspect: 'aspect-[4/3]',
   },
   {
-    src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80',
+    src: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80',
     alt: 'Living room',
     span: 'col-span-1 row-span-1',
     aspect: 'aspect-[4/3]',
   },
   {
-    src: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&q=80',
+    src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
     alt: 'Wimbledon village',
     span: 'col-span-1 row-span-2',
     aspect: 'aspect-[3/5]',
   },
   {
-    src: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&q=80',
+    src: 'https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80',
     alt: 'Interior detail',
     span: 'col-span-1 row-span-1',
     aspect: 'aspect-[4/3]',
