@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Homeowners',
   description: 'Whether you are selling, buying, letting, or looking for property management, Elizabeth Wightwick provides a personal, expert service in Wimbledon.',

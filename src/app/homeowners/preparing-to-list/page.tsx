@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Preparing to List Your Home',
   description: 'Expert guidance on preparing your property for sale or let in Wimbledon. Tips on presentation, decluttering, and maximising your home\'s appeal.',
