@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -46,14 +45,8 @@ export default function PreparingToListPage() {
       {/* Hero */}
       <section className="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80"
-            alt="Beautifully staged home interior"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80" alt="Beautifully staged home interior" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 to-transparent" />
         </div>
         <div className="relative z-10 container-wide pb-12">

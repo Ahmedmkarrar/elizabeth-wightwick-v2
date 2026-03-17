@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -40,14 +39,8 @@ export default function HomeownersPage() {
       {/* Hero */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=80"
-            alt="Beautiful home interior"
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1920&q=80" alt="Beautiful home interior" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-charcoal/50" />
         </div>
         <div className="relative z-10 container-wide">
@@ -68,13 +61,8 @@ export default function HomeownersPage() {
             {services.map((service) => (
               <Link key={service.href} href={service.href} className="group">
                 <div className="relative aspect-[16/10] overflow-hidden bg-beige">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={service.image} alt={service.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
                 <h3 className="heading-section text-charcoal mt-6 group-hover:text-brand transition-colors">
                   {service.title}
