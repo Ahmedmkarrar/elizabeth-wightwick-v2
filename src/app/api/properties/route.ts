@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin } from '@/lib/supabase';
 import { createProperty } from '@/lib/data';
 import type { Property } from '@/types';
 
@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
   const page = parseInt(searchParams.get('page') || '1');
   const limit = parseInt(searchParams.get('limit') || '12');
 
-  let query = supabase.from('properties').select('*', { count: 'exact' });
+  let query = supabaseAdmin.from('properties').select('*', { count: 'exact' });
 
   if (department) query = query.eq('department', department);
   if (status) query = query.eq('status', status);
