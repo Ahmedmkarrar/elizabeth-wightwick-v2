@@ -45,7 +45,7 @@ function PropertySkeleton() {
 export default function BuyPage() {
   const [allProperties, setAllProperties] = useState<Property[]>([]);
   const [loading, setLoading] = useState(true);
-  const [sort, setSort] = useState<string>('newest');
+  const [sort, setSort] = useState<string>('price_desc');
   const [minBeds, setMinBeds] = useState<string>('');
   const [maxPrice, setMaxPrice] = useState<string>('');
   const [propType, setPropType] = useState<string>('');

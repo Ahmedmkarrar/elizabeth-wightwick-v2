@@ -33,7 +33,7 @@ export function formatPriceFull(price: number, department?: string, qualifier?: 
 export function getStatusLabel(status: string): string {
   const labels: Record<string, string> = {
     available: 'Available',
-    new_listing: 'New Listing',
+    new_listing: 'New Instruction',
     let_agreed: 'Let Agreed',
     sold: 'Sold',
     under_offer: 'Under Offer',

@@ -21,6 +21,18 @@ const navLinks = [
       { href: '/property-finder', label: 'Property Finder Service' },
     ],
   },
+  {
+    href: '/areas',
+    label: 'Areas',
+    children: [
+      { href: '/wimbledon', label: 'Wimbledon Village' },
+      { href: '/areas/wimbledon-town', label: 'Wimbledon Town' },
+      { href: '/areas/coombe', label: 'Coombe' },
+      { href: '/areas/putney', label: 'Putney' },
+      { href: '/areas/raynes-park', label: 'Raynes Park' },
+      { href: '/areas/new-malden', label: 'New Malden' },
+    ],
+  },
   { href: '/who-we-are', label: 'Who We Are' },
   { href: '/contact', label: 'Contact' },
 ];
