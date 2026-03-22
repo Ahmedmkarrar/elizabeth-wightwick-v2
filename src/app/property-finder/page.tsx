@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 
 // ─── Split Text ───────────────────────────────────────────────────────────────
@@ -129,14 +128,12 @@ export default function PropertyFinderPage() {
       {/* ─── HERO ─────────────────────────────────────────────────────────── */}
       <section ref={heroRef} className="relative h-screen min-h-[700px] overflow-hidden flex items-center">
         {/* Background */}
-        <motion.div style={{ y: heroY }} className="absolute inset-0 scale-110">
-          <Image
+        <motion.div style={{ y: heroY }} className="absolute inset-0 scale-110 overflow-hidden">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=2400&q=90"
             alt="Luxury property"
-            fill
-            priority
-            className="object-cover"
-            sizes="100vw"
+            className="absolute inset-0 w-full h-full object-cover"
           />
         </motion.div>
 
@@ -236,14 +233,13 @@ export default function PropertyFinderPage() {
             whileInView={{ clipPath: 'inset(0 0% 0 0)' }}
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0"
+            className="absolute inset-0 overflow-hidden"
           >
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=85"
               alt="Wimbledon street"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="absolute inset-0 w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-charcoal/10" />
           </motion.div>
@@ -370,12 +366,11 @@ export default function PropertyFinderPage() {
                       transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                       className="absolute inset-0"
                     >
-                      <Image
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src={step.image}
                         alt={step.title}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        className="absolute inset-0 w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-charcoal/15" />
                     </motion.div>
@@ -548,12 +543,11 @@ export default function PropertyFinderPage() {
       {/* ─── FULL-BLEED QUOTE ─────────────────────────────────────────────── */}
       <section className="relative py-32 lg:py-48 overflow-hidden">
         <div className="absolute inset-0">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2000&q=80"
             alt="Luxury home"
-            fill
-            className="object-cover"
-            sizes="100vw"
+            className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-charcoal/80" />
         </div>

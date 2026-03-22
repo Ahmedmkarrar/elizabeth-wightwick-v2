@@ -2,7 +2,6 @@
 
 import { useMemo } from 'react';
 import { mockProperties } from '@/lib/mock-data';
-import Image from 'next/image';
 import Link from 'next/link';
 import { formatPrice } from '@/lib/utils';
 import { motion } from 'framer-motion';
@@ -63,12 +62,11 @@ export default function BestOf2025Page() {
                   <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 ${index % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
                     <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                       <div className="relative aspect-[16/11] overflow-hidden bg-beige">
-                        <Image
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
                           src={property.images[0]}
                           alt={property.title}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-105"
-                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                       </div>
                     </div>

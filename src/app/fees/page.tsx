@@ -16,18 +16,6 @@ export default function FeesPage() {
           <p className="mt-4 text-body text-slate font-inter font-light max-w-2xl">
             Transparent pricing, exceptional service. All fees shown are inclusive of VAT at the prevailing rate (currently 20%).
           </p>
-          <div className="mt-6">
-            <a
-              href="/fees/elizabeth-wightwick-fees.pdf"
-              className="inline-flex items-center gap-2 text-small font-inter text-brand border-b border-brand pb-0.5 hover:text-brand-dark hover:border-brand-dark transition-colors"
-              download
-            >
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-              </svg>
-              Download Fee Schedule (PDF)
-            </a>
-          </div>
         </div>
       </section>
 
@@ -206,13 +194,6 @@ export default function FeesPage() {
             >
               Get in Touch
             </Link>
-            <a
-              href="/fees/elizabeth-wightwick-fees.pdf"
-              className="border border-white/30 text-white px-8 py-3.5 text-small font-inter tracking-wide hover:bg-white/10 transition-all inline-block"
-              download
-            >
-              Download Fee Schedule
-            </a>
           </div>
         </div>
       </section>

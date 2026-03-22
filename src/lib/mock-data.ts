@@ -477,7 +477,8 @@ export const mockProperties: Property[] = [
     description: 'A beautifully renovated four-bedroom terraced house offering an exceptional blend of period charm and contemporary living. The property has been comprehensively extended and upgraded to the highest standard, featuring a stunning open-plan kitchen with marble island, bifold doors opening to the garden, and a full loft conversion.\n\nPeriod features have been carefully retained throughout, including original fireplaces and bay windows, complemented by two modern bathrooms, engineered oak flooring, and a private rear garden. The rear extension benefits from generous skylights and full-width glazing, flooding the space with natural light.',
     department: 'lettings',
     property_type: 'house',
-    price: 0, // TODO: update price via admin panel
+    price: 0,
+    price_qualifier: 'POA',
     rent_period: 'pcm',
     status: 'let_agreed',
     bedrooms: 4,

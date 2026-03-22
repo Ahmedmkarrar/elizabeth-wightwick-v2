@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -18,14 +17,12 @@ const process = [
 export default function SalesServicePage() {
   return (
     <>
-      <section className="relative h-[50vh] min-h-[400px] flex items-end">
-        <Image
+      <section className="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=80"
           alt="Luxury property for sale in Wimbledon"
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
+          className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 to-transparent" />
         <div className="relative container-wide pb-12 text-white">

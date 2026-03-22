@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -25,13 +24,12 @@ export default function AboutPage() {
         <div className="container-content">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
             <div>
-              <div className="relative aspect-[4/5] bg-beige">
-                <Image
+              <div className="relative aspect-[4/5] bg-beige overflow-hidden">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80"
                   alt="Elizabeth Wightwick office, Wimbledon Village High Street"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
             </div>

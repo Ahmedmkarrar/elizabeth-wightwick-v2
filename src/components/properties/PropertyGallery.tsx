@@ -1,8 +1,6 @@
 'use client';
 
 import { useState, useCallback, useEffect } from 'react';
-import Image from 'next/image';
-
 import { XMarkIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -53,15 +51,17 @@ export default function PropertyGallery({ images, address }: PropertyGalleryProp
       {/* Mosaic Gallery Grid */}
       <div className="cursor-pointer" onClick={() => openLightbox(0)}>
         {displayImages.length === 1 ? (
-          <div className="relative w-full h-[50vh] md:h-[65vh] lg:h-[75vh] group">
-            <Image src={displayImages[0]} alt={address} fill className="object-cover" priority sizes="100vw" />
+          <div className="relative w-full h-[50vh] md:h-[65vh] lg:h-[75vh] group overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={displayImages[0]} alt={address} className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-400" />
           </div>
         ) : displayImages.length === 2 ? (
           <div className="grid grid-cols-2 gap-1 h-[50vh] md:h-[65vh] lg:h-[70vh]">
             {displayImages.map((img, i) => (
               <div key={i} className="relative overflow-hidden group" onClick={(e) => { e.stopPropagation(); openLightbox(i); }}>
-                <Image src={img} alt={`${address} - ${i + 1}`} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" sizes="50vw" priority={i === 0} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img} alt={`${address} - ${i + 1}`} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
               </div>
             ))}
           </div>
@@ -72,7 +72,8 @@ export default function PropertyGallery({ images, address }: PropertyGalleryProp
               className="relative col-span-2 row-span-2 overflow-hidden group"
               onClick={(e) => { e.stopPropagation(); openLightbox(0); }}
             >
-              <Image src={displayImages[0]} alt={address} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" sizes="50vw" priority />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={displayImages[0]} alt={address} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
             </div>
             {/* Secondary images */}
             {displayImages.slice(1).map((img, i) => (
@@ -81,7 +82,8 @@ export default function PropertyGallery({ images, address }: PropertyGalleryProp
                 className="relative overflow-hidden group"
                 onClick={(e) => { e.stopPropagation(); openLightbox(i + 1); }}
               >
-                <Image src={img} alt={`${address} - ${i + 2}`} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.02]" sizes="25vw" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={img} alt={`${address} - ${i + 2}`} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
                 {/* Show remaining count on last image */}
                 {i === displayImages.length - 2 && remaining > 0 && (
                   <div className="absolute inset-0 bg-charcoal/50 flex items-center justify-center">
@@ -152,14 +154,13 @@ export default function PropertyGallery({ images, address }: PropertyGalleryProp
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.3 }}
-                className="relative w-full h-full max-w-6xl max-h-[85vh] mx-4 md:mx-12"
+                className="relative w-full h-full max-w-6xl max-h-[85vh] mx-4 md:mx-12 overflow-hidden"
               >
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src={images[currentIndex]}
                   alt={`${address} - Photo ${currentIndex + 1}`}
-                  fill
-                  className="object-contain"
-                  sizes="100vw"
+                  className="absolute inset-0 w-full h-full object-contain"
                 />
               </motion.div>
             </AnimatePresence>
