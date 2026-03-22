@@ -20,6 +20,9 @@ export function formatPrice(price: number, department?: string): string {
 }
 
 export function formatPriceFull(price: number, department?: string, qualifier?: string): string {
+  if (qualifier === 'POA' || price === 0) {
+    return 'Price not disclosed';
+  }
   const formatted = department === 'lettings'
     ? `£${price.toLocaleString('en-GB')} pcm`
     : `£${price.toLocaleString('en-GB')}`;

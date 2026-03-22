@@ -4,6 +4,11 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const footerLinks = [
+  { href: '/buy', label: 'Properties for Sale' },
+  { href: '/rent', label: 'Properties to Let' },
+  { href: '/properties/archive', label: 'Recently Sold & Let' },
+  { href: '/areas', label: 'Area Guides' },
+  { href: '/valuation', label: 'Book a Valuation' },
   { href: '/who-we-are', label: 'Who We Are' },
   { href: '/contact', label: 'Contact' },
   { href: '/privacy-policy', label: 'Privacy Policy' },
