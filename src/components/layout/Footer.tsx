@@ -10,6 +10,7 @@ const footerLinks = [
   { href: '/areas', label: 'Area Guides' },
   { href: '/valuation', label: 'Book a Valuation' },
   { href: '/who-we-are', label: 'Who We Are' },
+  { href: '/downloads', label: 'Downloads & Forms' },
   { href: '/contact', label: 'Contact' },
   { href: '/privacy-policy', label: 'Privacy Policy' },
   { href: '/complaints-procedure', label: 'Complaints Procedure' },
