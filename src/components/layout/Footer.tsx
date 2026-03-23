@@ -20,13 +20,13 @@ const accreditations = [
   {
     name: 'Client Money Protection',
     logo: '/images/accreditations/client-money-protection-logo.png',
-    href: '/documents/client-money-protection-certificate.pdf',
+    href: null,
     external: false,
   },
   {
     name: 'Client Money Protection Security',
     logo: '/images/accreditations/client-money-protection-security-logo.png',
-    href: '/documents/client-money-protection-security-certificate.pdf',
+    href: null,
     external: false,
   },
   {
