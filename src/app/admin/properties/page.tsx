@@ -2,8 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
+import { cn, formatPriceFull } from '@/lib/utils';
 import Modal from '@/components/ui/Modal';
 import Button from '@/components/ui/Button';
 import type { Property, PropertyStatus } from '@/types';
@@ -208,10 +207,9 @@ export default function AdminPropertiesPage() {
                   <td className="py-3 px-4">
                     <div className="flex items-center gap-3">
                       <div className="relative w-14 h-10 overflow-hidden bg-beige flex-shrink-0">
-                        {property.main_image ? (
-                          <Image src={property.main_image} alt="" fill className="object-cover" sizes="56px" />
-                        ) : (
-                          <div className="w-full h-full bg-beige" />
+                        {property.main_image && (
+                          /* eslint-disable-next-line @next/next/no-img-element */
+                          <img src={property.main_image} alt="" className="absolute inset-0 w-full h-full object-cover" />
                         )}
                       </div>
                       <div className="min-w-0">
@@ -261,7 +259,7 @@ export default function AdminPropertiesPage() {
 
                   <td className="py-3 px-4 hidden lg:table-cell">
                     <span className="text-[13px] font-inter text-charcoal font-medium">
-                      £{property.price.toLocaleString()}{property.rent_period ? ' pcm' : ''}
+                      {formatPriceFull(property.price, property.department, property.price_qualifier)}
                     </span>
                   </td>
 

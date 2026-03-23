@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { formatPriceFull } from '@/lib/utils';
 import {
   BuildingOfficeIcon,
   CurrencyPoundIcon,
@@ -28,6 +29,8 @@ interface RecentProperty {
   city: string;
   postcode: string;
   price: number;
+  price_qualifier?: string;
+  department: string;
   rent_period?: string;
   status: string;
   main_image?: string;
@@ -163,7 +166,7 @@ export default function AdminDashboard() {
                     </div>
                     <div className="text-right flex-shrink-0">
                       <p className="text-[13px] font-inter text-charcoal">
-                        £{property.price.toLocaleString()}{property.rent_period ? ' pcm' : ''}
+                        {formatPriceFull(property.price, property.department, property.price_qualifier)}
                       </p>
                       <span className={`text-[10px] font-inter uppercase tracking-wider ${
                         property.status === 'available' ? 'text-emerald-600' :

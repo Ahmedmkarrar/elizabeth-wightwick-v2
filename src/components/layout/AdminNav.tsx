@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import {
   HomeIcon,
@@ -16,18 +16,32 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline';
 
-const adminLinks = [
-  { href: '/admin', label: 'Dashboard', icon: HomeIcon },
-  { href: '/admin/properties', label: 'Properties', icon: BuildingOfficeIcon },
-  { href: '/admin/inquiries', label: 'Inquiries', icon: ChatBubbleLeftIcon, badge: 3 },
-  { href: '/admin/valuations', label: 'Valuations', icon: DocumentTextIcon, badge: 1 },
-  { href: '/admin/settings', label: 'Settings', icon: Cog6ToothIcon },
-];
-
 export default function AdminNav() {
   const pathname = usePathname();
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [newInquiries, setNewInquiries] = useState(0);
+  const [newValuations, setNewValuations] = useState(0);
+
+  useEffect(() => {
+    fetch('/api/admin/stats')
+      .then((r) => r.ok ? r.json() : null)
+      .then((data) => {
+        if (data) {
+          setNewInquiries(data.newInquiries ?? 0);
+          setNewValuations(data.newValuations ?? 0);
+        }
+      })
+      .catch(() => {});
+  }, [pathname]);
+
+  const adminLinks = [
+    { href: '/admin', label: 'Dashboard', icon: HomeIcon },
+    { href: '/admin/properties', label: 'Properties', icon: BuildingOfficeIcon },
+    { href: '/admin/inquiries', label: 'Inquiries', icon: ChatBubbleLeftIcon, badge: newInquiries },
+    { href: '/admin/valuations', label: 'Valuations', icon: DocumentTextIcon, badge: newValuations },
+    { href: '/admin/settings', label: 'Settings', icon: Cog6ToothIcon },
+  ];
 
   const handleLogout = () => {
     sessionStorage.removeItem('ew-admin-auth');
@@ -83,7 +97,7 @@ export default function AdminNav() {
               {active && <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-brand rounded-r" />}
               <Icon className="w-[18px] h-[18px]" />
               <span className="flex-1">{link.label}</span>
-              {link.badge && (
+              {link.badge > 0 && (
                 <span className={cn(
                   'text-[10px] font-medium min-w-[20px] h-5 flex items-center justify-center rounded-full',
                   active ? 'bg-brand text-white' : 'bg-white/10 text-white/50'
