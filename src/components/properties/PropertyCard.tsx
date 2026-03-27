@@ -22,9 +22,6 @@ export default function PropertyCard({ property }: PropertyCardProps) {
     (property.reception_rooms ?? 0) > 0 ? `${property.reception_rooms} recep` : null,
   ].filter(Boolean);
 
-  const showNewListing = property.status === 'available' && isNewListing(property.created_at);
-  const badgeStatus = showNewListing ? 'new_listing' : property.status;
-
   return (
     <Link href={`/properties/${property.id}`} className="group block">
       {/* Image - Portrait 3:4 with hover slider */}
