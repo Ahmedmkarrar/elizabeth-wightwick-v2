@@ -30,11 +30,17 @@ export default function Intro() {
             className="space-y-5"
           >
             <p className="text-body text-slate font-inter font-light leading-relaxed text-[16px]">
-              We are a boutique estate agency based in Wimbledon Village with more than 30 years of experience in South West London property. We work with a deliberately small number of clients — sellers, buyers, landlords, and tenants — to ensure that every relationship receives our full and undivided attention.
+              We work with a small number of clients at any one time, ensuring every sale and let receives our full attention. No handoffs. No call centres. Just honest, expert guidance.
             </p>
             <p className="text-body text-slate font-inter font-light leading-relaxed text-[16px]">
-              This is not an agency where your home is one of hundreds on a database. Every property we handle is handled by us, personally. From the first conversation to the final completion, you will always know who is looking after you.
+              London property, handled personally.
             </p>
+            <div className="pt-6 border-t border-beige mt-8">
+              <h3 className="font-cormorant text-[1.5rem] font-light text-charcoal mb-4">Prime & Discreet</h3>
+              <p className="text-body text-slate font-inter font-light leading-relaxed text-[14px]">
+                We understand that privacy is paramount for high-value sales. We handle private and off-market transactions with total discretion — including recent landmark sales on Marryat Road for £11.92M.
+              </p>
+            </div>
             <div className="pt-4">
               <Link
                 href="/who-we-are"

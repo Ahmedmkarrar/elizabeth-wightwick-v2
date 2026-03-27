@@ -62,7 +62,7 @@ function PropertyImageHover({ property }: { property: Property }) {
       )}
 
       <div className="absolute top-4 left-4 z-20">
-        <Badge status={property.status} />
+        <Badge status={property.status} createdAt={property.created_at} />
       </div>
 
       <div className="absolute top-4 right-4 z-20">

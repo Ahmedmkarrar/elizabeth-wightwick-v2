@@ -2,10 +2,11 @@ import { cn, getStatusLabel, getStatusColor } from '@/lib/utils';
 
 interface BadgeProps {
   status: string;
+  createdAt?: string;
   className?: string;
 }
 
-export default function Badge({ status, className }: BadgeProps) {
+export default function Badge({ status, createdAt, className }: BadgeProps) {
   return (
     <span
       className={cn(
@@ -14,7 +15,7 @@ export default function Badge({ status, className }: BadgeProps) {
         className
       )}
     >
-      {getStatusLabel(status)}
+      {getStatusLabel(status, createdAt)}
     </span>
   );
 }

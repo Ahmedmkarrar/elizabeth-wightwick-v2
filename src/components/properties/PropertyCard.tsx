@@ -73,7 +73,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
 
         {/* Status badge */}
         <div className="absolute top-4 left-4 z-20">
-          <Badge status={badgeStatus} />
+          <Badge status={property.status} createdAt={property.created_at} />
         </div>
 
         {/* Department tag */}

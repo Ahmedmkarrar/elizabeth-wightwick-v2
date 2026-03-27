@@ -12,10 +12,10 @@ import type { Property } from '@/types';
 const FALLBACK_SLIDES = [
   {
     id: 'f1',
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80',
-    title: 'Wimbledon Village',
-    address: 'SW19',
-    city: 'London',
+    image: 'https://images.unsplash.com/photo-1513309914637-65c20a5962e1?auto=format&fit=crop&w=2000&q=80',
+    title: 'Wimbledon Common',
+    address: 'London property, handled personally.',
+    city: 'SW19',
     postcode: '',
     department: 'sales' as const,
     price: null,
@@ -26,9 +26,9 @@ const FALLBACK_SLIDES = [
   },
   {
     id: 'f2',
-    image: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=2000&q=80',
-    title: 'South West London',
-    address: 'Premium Lettings',
+    image: 'https://images.unsplash.com/photo-1528909522201-5ee4979178d5?auto=format&fit=crop&w=2000&q=80',
+    title: 'Wimbledon Village',
+    address: 'Bespoke independent guidance.',
     city: 'London',
     postcode: '',
     department: 'lettings' as const,
@@ -37,20 +37,6 @@ const FALLBACK_SLIDES = [
     bathrooms: null,
     reception_rooms: null,
     href: '/rent',
-  },
-  {
-    id: 'f3',
-    image: 'https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=2000&q=80',
-    title: 'Exceptional Homes',
-    address: 'Curated for you',
-    city: '',
-    postcode: '',
-    department: 'sales' as const,
-    price: null,
-    bedrooms: null,
-    bathrooms: null,
-    reception_rooms: null,
-    href: '/buy',
   },
 ];
 

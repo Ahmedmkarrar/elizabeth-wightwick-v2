@@ -237,7 +237,7 @@ export default function PropertyDetailClient({ params }: { params: { id: string 
                   <span className="text-tiny font-inter font-medium uppercase tracking-widest text-brand">
                     {getDepartmentLabel(property.department)}
                   </span>
-                  {property.status !== 'available' && <Badge status={property.status} />}
+                  {property.status !== 'available' && <Badge status={property.status} createdAt={property.created_at} />}
                 </div>
                 <h1 className="font-cormorant text-[2rem] md:text-[2.75rem] font-light text-charcoal leading-tight">
                   {address}

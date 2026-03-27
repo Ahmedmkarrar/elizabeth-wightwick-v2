@@ -33,10 +33,14 @@ export function formatPriceFull(price: number, department?: string, qualifier?: 
   return formatted;
 }
 
-export function getStatusLabel(status: string): string {
+export function getStatusLabel(status: string, createdAt?: string): string {
+  if (status === 'available') {
+    if (createdAt && isNewListing(createdAt)) {
+      return 'New Instruction';
+    }
+    return 'Available';
+  }
   const labels: Record<string, string> = {
-    available: 'Available',
-    new_listing: 'New Instruction',
     let_agreed: 'Let Agreed',
     sold: 'Sold',
     under_offer: 'Under Offer',
